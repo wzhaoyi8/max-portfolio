@@ -97,43 +97,37 @@ nav {
   padding: clamp(3rem, 6vw, 5rem) var(--pad);
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 1px;
-  background: var(--border);
-  border: 1px solid var(--border);
+  gap: 3rem 2.5rem;
 }
 
 /* ── Project Card ── */
 .project-card {
   display: flex;
   flex-direction: column;
-  background: var(--bg);
-  transition: background 0.2s;
+  transition: opacity 0.25s;
   cursor: pointer;
 }
-.project-card:hover { background: var(--hover-bg); }
+.project-card:hover { opacity: 0.75; }
 
 .project-image {
   width: 100%;
-  aspect-ratio: 1 / 2;
+  aspect-ratio: 2 / 1;
   overflow: hidden;
   background: var(--border);
+  outline: 1px solid var(--border);
+  outline-offset: 6px;
 }
 .image-placeholder {
   width: 100%;
   height: 100%;
   background: var(--border);
 }
-.project-card:hover .project-image img,
-.project-card:hover .image-placeholder {
-  opacity: 0.92;
-}
 
 .project-info {
-  padding: 1.5rem 1.75rem 2rem;
+  padding: 1.25rem 0 0;
   display: flex;
   gap: 1.25rem;
   align-items: flex-start;
-  border-top: 1px solid var(--border);
 }
 .project-num {
   font-size: 11px;
