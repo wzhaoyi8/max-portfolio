@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Latent Kiln — Max Zhaoyi Wang</title>
+  <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="../project-styles.css">
+</head>
+<body>
+
+  <nav class="project-nav">
+    <a href="../index.html" class="back-link">All Work</a>
+    <a href="../index.html" class="project-nav-name">Max Zhaoyi Wang</a>
+  </nav>
+
+  <div class="project-hero">
+    <img src="../images/latent-kiln-cover.png" alt="Latent Kiln">
+  </div>
+
+  <div class="project-header">
+    <h1>Latent Kiln</h1>
+    <div class="project-header-meta">
+      <div class="meta-row">
+        <span class="meta-label">Subtitle</span>
+        <span class="meta-value">AI-Trained Vision Models to Classify Ceramic Vessels by Dynasty &amp; Region</span>
+      </div>
+      <div class="meta-row">
+        <span class="meta-label">Category</span>
+        <span class="meta-value">Harvard GSD · SCI Seminar · Digital Exhibition</span>
+      </div>
+      <div class="meta-row">
+        <span class="meta-label">Dataset</span>
+        <span class="meta-value">V&amp;A Museum Digital Archive · 4,900+ ceramic vessel images</span>
+      </div>
+      <div class="meta-row">
+        <span class="meta-label">Year</span>
+        <span class="meta-value">2024</span>
+      </div>
+      <div class="meta-row">
+        <span class="meta-label">Stack</span>
+        <span class="meta-value">Python · PyTorch · Computer Vision · HTML/CSS/JS</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="project-body">
+
+    <div class="project-section">
+      <p class="section-label">Concept</p>
+      <div class="section-text">
+        <p>Latent Kiln is a computational research project that asks: can a machine learn to see ceramics the way a historian does — recognizing dynasty, region, and material culture from visual form alone?</p>
+        <p>Working from a dataset of 4,900+ ceramic vessel images sourced from the Victoria &amp; Albert Museum archive, the project trains three distinct computer vision models, each encoding a different perceptual dimension of ceramic form. The results are aggregated into a digital exhibition that allows users to navigate the latent space of ceramic history.</p>
+      </div>
+    </div>
+
+    <div class="project-section">
+      <p class="section-label">Three-Model Architecture</p>
+      <div class="section-text">
+        <p>Rather than training a single monolithic classifier, the project constructs three parallel models — each trained on a different visual representation of the same object. This reflects how human experts look at ceramics from multiple complementary perspectives simultaneously.</p>
+      </div>
+
+      <div class="img-grid-3">
+        <div>
+          <img src="../images/latent-kiln/model-photos.png" alt="Model 1 — Photos">
+          <p class="img-caption">Model 1 — Photo<br>Texture &amp; Materiality Space</p>
+        </div>
+        <div>
+          <img src="../images/latent-kiln/model-edges.png" alt="Model 2 — Edges">
+          <p class="img-caption">Model 2 — Edge Detection<br>Silhouette &amp; Shape Space</p>
+        </div>
+        <div>
+          <img src="../images/latent-kiln/model-masks.png" alt="Model 3 — Masks">
+          <p class="img-caption">Model 3 — Segmentation Mask<br>Volume &amp; Mass Space</p>
+        </div>
+      </div>
+
+      <!-- DROP IN GIF: images/latent-kiln/model-comparison.gif -->
+      <div class="gif-wrap">
+        <img src="../images/latent-kiln/model-comparison.gif" alt="Three models comparison">
+        <p class="img-caption">Same vessel — three perceptual encodings across Photo / Edge / Mask models</p>
+      </div>
+    </div>
+
+    <div class="project-section">
+      <p class="section-label">Training Pipeline</p>
+      <div class="section-text">
+        <p>Each model is a fine-tuned ImageNet classifier retrained on domain-specific ceramic data. The pipeline begins with raw museum images, applies automated background removal and edge extraction, then trains with data augmentation (random rotation, crop, horizontal flip) across 15 epochs. A confidence threshold of 60% filters uncertain classifications.</p>
+        <p>The AI sorting script processes the full 4,900-image archive, routing each vessel into dynasty and regional categories. Uncertain predictions are flagged for manual review, creating a human-in-the-loop verification stage that improves training quality iteratively.</p>
+      </div>
+
+      <div class="img-full">
+        <img src="../images/latent-kiln/pipeline-diagram.png" alt="Training pipeline">
+        <p class="img-caption">End-to-end pipeline — data collection → preprocessing → training → classification → exhibition</p>
+      </div>
+
+      <!-- DROP IN GIF: images/latent-kiln/classification-demo.gif -->
+      <div class="gif-wrap">
+        <img src="../images/latent-kiln/classification-demo.gif" alt="AI classification in action">
+        <p class="img-caption">AI classification — real-time dynasty &amp; region prediction with confidence scores</p>
+      </div>
+    </div>
+
+    <div class="project-section">
+      <p class="section-label">Digital Exhibition</p>
+      <div class="section-text">
+        <p>The trained models power a browser-based digital exhibition where visitors can explore the full ceramic archive, filtered and organized by the AI's classifications. Users can also upload a sketch or photograph to receive dynasty and region predictions in real time — inverting the tool from classifier to search engine.</p>
+      </div>
+
+      <div class="img-grid-2">
+        <div>
+          <img src="../images/latent-kiln/exhibition-01.png" alt="Exhibition view 1">
+          <p class="img-caption">Archive browser — vessels sorted by dynasty</p>
+        </div>
+        <div>
+          <img src="../images/latent-kiln/exhibition-02.png" alt="Exhibition view 2">
+          <p class="img-caption">Real-time classification interface</p>
+        </div>
+      </div>
+
+      <!-- DROP IN GIF: images/latent-kiln/exhibition-demo.gif -->
+      <div class="gif-wrap">
+        <img src="../images/latent-kiln/exhibition-demo.gif" alt="Exhibition interactive demo">
+        <p class="img-caption">Interactive exhibition — sketch input → AI dynasty prediction</p>
+      </div>
+    </div>
+
+    <div class="project-section">
+      <p class="section-label">Tags</p>
+      <div class="tag-row">
+        <span class="tag">Machine Learning</span>
+        <span class="tag">Computer Vision</span>
+        <span class="tag">PyTorch</span>
+        <span class="tag">Python</span>
+        <span class="tag">Cultural Heritage</span>
+        <span class="tag">Digital Exhibition</span>
+        <span class="tag">V&amp;A Museum</span>
+        <span class="tag">Harvard GSD</span>
+      </div>
+    </div>
+
+  </div>
+
+  <a href="aerroterra.html" class="next-project">
+    <div>
+      <p class="next-label">Back to First</p>
+      <p class="next-title">AerroTerra →</p>
+    </div>
+  </a>
+
+</body>
+</html>

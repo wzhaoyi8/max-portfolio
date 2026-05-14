@@ -114,7 +114,7 @@ nav {
 
 .project-image {
   width: 100%;
-  aspect-ratio: 4 / 3;
+  aspect-ratio: 1 / 2;
   overflow: hidden;
   background: var(--border);
 }

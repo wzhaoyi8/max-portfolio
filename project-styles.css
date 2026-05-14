@@ -1,0 +1,208 @@
+/* ── Shared styles for all project detail pages ── */
+
+/* Inherits :root variables from style.css — link both in every project page */
+
+/* ── Back Nav ── */
+.project-nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--bg);
+  border-bottom: 1px solid var(--border);
+  padding: 1.25rem var(--pad);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 100%;
+}
+.back-link {
+  font-size: 13px;
+  color: var(--muted);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  transition: color 0.2s;
+}
+.back-link::before { content: '← '; }
+.back-link:hover { color: var(--text); }
+.project-nav-name {
+  font-size: 14px;
+  font-weight: 400;
+}
+
+/* ── Hero ── */
+.project-hero {
+  width: 100%;
+  max-height: 80vh;
+  overflow: hidden;
+}
+.project-hero img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* ── Project Header ── */
+.project-header {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 3.5rem var(--pad) 2.5rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  border-bottom: 1px solid var(--border);
+}
+.project-header h1 {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  font-size: clamp(2rem, 4vw, 3rem);
+  line-height: 1.2;
+}
+.project-header-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  padding-top: 0.25rem;
+}
+.meta-row {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+.meta-label {
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.meta-value {
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+/* ── Content Body ── */
+.project-body {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 4rem var(--pad);
+}
+
+/* ── Section ── */
+.project-section {
+  margin-bottom: 5rem;
+}
+.section-label {
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 1.25rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--border);
+}
+.section-text {
+  font-size: 15px;
+  line-height: 1.8;
+  max-width: 680px;
+  color: var(--text);
+}
+.section-text p + p { margin-top: 1em; }
+
+/* ── Image Grid ── */
+.img-grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+.img-grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin-top: 2rem;
+}
+.img-full {
+  width: 100%;
+  margin-top: 2rem;
+}
+.img-grid-2 img,
+.img-grid-3 img,
+.img-full img {
+  width: 100%;
+  display: block;
+}
+.img-caption {
+  font-size: 11px;
+  color: var(--muted);
+  letter-spacing: 0.04em;
+  margin-top: 0.5rem;
+}
+
+/* ── GIF / Video ── */
+.gif-wrap {
+  margin-top: 2rem;
+  width: 100%;
+}
+.gif-wrap img,
+.gif-wrap video {
+  width: 100%;
+  display: block;
+}
+
+/* ── PDF Embed ── */
+.pdf-wrap {
+  margin-top: 2.5rem;
+  width: 100%;
+  border: 1px solid var(--border);
+}
+.pdf-wrap iframe {
+  width: 100%;
+  height: 90vh;
+  display: block;
+  border: none;
+}
+
+/* ── Tags ── */
+.tag-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 1.5rem;
+}
+.tag {
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  border: 1px solid var(--border);
+  padding: 0.3rem 0.75rem;
+  color: var(--muted);
+}
+
+/* ── Next Project ── */
+.next-project {
+  border-top: 1px solid var(--border);
+  padding: 2.5rem var(--pad);
+  max-width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.next-label {
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.next-title {
+  font-family: var(--font-serif);
+  font-size: 1.5rem;
+  margin-top: 0.25rem;
+  transition: opacity 0.2s;
+}
+.next-project:hover .next-title { opacity: 0.5; }
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  .project-header { grid-template-columns: 1fr; gap: 1.5rem; }
+  .img-grid-2, .img-grid-3 { grid-template-columns: 1fr; }
+}
