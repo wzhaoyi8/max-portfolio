@@ -107,9 +107,8 @@ nav {
   transition: opacity 0.25s;
   cursor: pointer;
 }
-.project-card:hover { opacity: 0.75; }
-
 .project-image {
+  position: relative;
   width: 100%;
   aspect-ratio: 2 / 1;
   overflow: hidden;
@@ -117,9 +116,23 @@ nav {
   outline: 1px solid var(--border);
   outline-offset: 6px;
 }
-.image-placeholder {
+.project-image img {
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
+  object-fit: cover;
+  transition: opacity 0.5s ease;
+}
+.project-image .img-hover {
+  opacity: 0;
+}
+.project-card:hover .img-primary { opacity: 0; }
+.project-card:hover .img-hover   { opacity: 1; }
+
+.image-placeholder {
+  position: absolute;
+  inset: 0;
   background: var(--border);
 }
 
