@@ -126,9 +126,18 @@ nav {
 }
 .project-image .img-hover {
   opacity: 0;
+  object-fit: contain;
+  inset: 10%;
+  width: auto;
+  height: auto;
 }
-.project-card:hover .img-primary { opacity: 0; }
-.project-card:hover .img-hover   { opacity: 1; }
+.project-card:hover .img-primary         { opacity: 0; }
+.project-card:hover .img-hover           { opacity: 1; }
+.project-card:hover .project-image       { background: var(--bg); }
+
+/* Cards without a hover image — keep primary visible */
+.project-card.no-hover:hover .img-primary { opacity: 1; }
+.project-card.no-hover .img-hover         { display: none; }
 
 .image-placeholder {
   position: absolute;
