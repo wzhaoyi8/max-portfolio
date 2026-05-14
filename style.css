@@ -6,8 +6,8 @@
   --border:   #e0dedd;
   --hover-bg: #efefec;
 
-  --font-sans:  'Inter', sans-serif;
-  --font-serif: 'EB Garamond', Georgia, serif;
+  --font-sans:  'Inter', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+  --font-serif: 'Georgia', 'Times New Roman', serif;
 
   --max-width: 1200px;
   --pad:       clamp(1.5rem, 4vw, 3.5rem);
