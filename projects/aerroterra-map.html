@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AerroTerra — Site Intelligence Map</title>
+
+  <!-- Leaflet -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:     #f7f6f3;
+      --text:   #111111;
+      --muted:  #888888;
+      --border: #e0dedd;
+      --font:   'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+
+      --high:   rgb(192, 90, 70);
+      --med:    rgb(215, 155, 90);
+      --built:  rgb(165, 72, 57);
+      --tree:   rgb(142, 168, 97);
+      --bare:   rgb(215, 207, 190);
+      --water:  rgb(148, 185, 210);
+    }
+
+    html, body { height: 100%; background: var(--bg); }
+
+    /* ── Layout ── */
+    #app {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+
+    /* ── Layer Bar ── */
+    #layer-bar {
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      gap: 0;
+      padding: 0 1.5rem;
+      border-bottom: 1px solid var(--border);
+      background: var(--bg);
+      overflow-x: auto;
+    }
+    .layer-btn {
+      font-family: var(--font);
+      font-size: 11px;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      color: var(--muted);
+      border: none;
+      background: transparent;
+      padding: 1rem 1.25rem;
+      cursor: pointer;
+      border-bottom: 2px solid transparent;
+      white-space: nowrap;
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .layer-btn:hover { color: var(--text); }
+    .layer-btn.active {
+      color: var(--text);
+      border-bottom-color: var(--text);
+    }
+    .layer-sep {
+      width: 1px;
+      height: 1.5rem;
+      background: var(--border);
+      flex-shrink: 0;
+    }
+
+    /* ── Map ── */
+    #map {
+      flex: 1;
+      min-height: 0;
+    }
+    .leaflet-container { background: var(--bg); }
+
+    /* ── Legend panel ── */
+    #legend {
+      position: absolute;
+      bottom: 2rem;
+      right: 1.5rem;
+      z-index: 1000;
+      background: rgba(247,246,243,0.95);
+      border: 1px solid var(--border);
+      padding: 1rem 1.25rem;
+      min-width: 170px;
+      backdrop-filter: blur(6px);
+    }
+    #legend-title {
+      font-family: var(--font);
+      font-size: 10px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 0.8rem;
+    }
+    .legend-row {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      margin-bottom: 0.5rem;
+      font-family: var(--font);
+      font-size: 12px;
+      color: var(--text);
+    }
+    .legend-row:last-child { margin-bottom: 0; }
+    .legend-swatch {
+      width: 14px;
+      height: 14px;
+      flex-shrink: 0;
+    }
+
+    /* ── Info callout (bottom-left) ── */
+    #info-bar {
+      position: absolute;
+      bottom: 2rem;
+      left: 1.5rem;
+      z-index: 1000;
+      max-width: 280px;
+    }
+    #info-label {
+      font-family: var(--font);
+      font-size: 10px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 0.5rem;
+    }
+    #info-text {
+      font-family: var(--font);
+      font-size: 13px;
+      line-height: 1.6;
+      color: var(--text);
+      background: rgba(247,246,243,0.95);
+      border: 1px solid var(--border);
+      padding: 0.9rem 1rem;
+      backdrop-filter: blur(6px);
+    }
+
+    /* ── Scale override ── */
+    .leaflet-control-attribution { display: none; }
+    .leaflet-control-zoom { border: 1px solid var(--border) !important; border-radius: 0 !important; }
+    .leaflet-control-zoom a {
+      font-family: var(--font) !important;
+      color: var(--muted) !important;
+      background: var(--bg) !important;
+      border-radius: 0 !important;
+      border-color: var(--border) !important;
+    }
+    .leaflet-control-zoom a:hover { color: var(--text) !important; }
+  </style>
+</head>
+<body>
+<div id="app">
+
+  <!-- Layer switcher -->
+  <div id="layer-bar">
+    <button class="layer-btn active" data-layer="uae">UAE — Land Cover</button>
+    <div class="layer-sep"></div>
+    <button class="layer-btn" data-layer="abudhabi">Abu Dhabi — Detail</button>
+    <div class="layer-sep"></div>
+    <button class="layer-btn" data-layer="suitability">Deployment Suitability</button>
+  </div>
+
+  <!-- Map container -->
+  <div id="map"></div>
+
+  <!-- Legend -->
+  <div id="legend">
+    <div id="legend-title">Land Cover</div>
+    <div id="legend-items"></div>
+  </div>
+
+  <!-- Info callout -->
+  <div id="info-bar">
+    <div id="info-label">Context</div>
+    <div id="info-text">UAE land cover — built-up areas (red), sparse desert (sand), tree cover (green), coastal wetlands (teal).</div>
+  </div>
+
+</div>
+
+<script>
+// ── Layer config ────────────────────────────────────────────────────
+const BASE = '../';   // relative to projects/
+
+// ── Layer config (pixel dimensions of each PNG) ──────────────────────
+const LAYERS = {
+  uae: {
+    image:  BASE + 'images/aerroterra/map-uae-landcover.png',
+    w: 2400, h: 1788,
+    legend: 'landcover',
+    info:   'UAE national scale — land cover classification from ESA WorldCover 2021 (10 m). Built-up areas (red) concentrate along the coast. The interior is dominated by bare / sparse desert.'
+  },
+  abudhabi: {
+    image:  BASE + 'images/aerroterra/map-abudhabi-landcover.png',
+    w: 2400, h: 1453,
+    legend: 'landcover',
+    info:   'Abu Dhabi urban area — dense built-up fabric with almost no tree cover or permeable ground. Extreme heat (peak 44 °C) and near-total soil salinisation make ground farming impossible: façade-mounted aeroponics becomes the only viable urban food production strategy.'
+  },
+  suitability: {
+    image:  BASE + 'images/aerroterra/map-suitability.png',
+    w: 2400, h: 1453,
+    legend: 'suitability',
+    info:   'AerroTerra deployment suitability — derived from built-up density and absence of existing vegetation. Hot-red zones indicate maximum intervention impact: high façade area, highest cooling demand, zero competing greenery.'
+  }
+};
+
+const LEGENDS = {
+  landcover: [
+    { color: 'rgb(165,72,57)',   label: 'Built-up' },
+    { color: 'rgb(215,207,190)', label: 'Bare / Sparse' },
+    { color: 'rgb(142,168,97)',  label: 'Tree cover' },
+    { color: 'rgb(148,185,210)', label: 'Water' },
+    { color: 'rgb(82,158,158)',  label: 'Wetland' },
+  ],
+  suitability: [
+    { color: 'rgb(192,90,70)',   label: 'High priority' },
+    { color: 'rgb(215,155,90)',  label: 'Moderate' },
+    { color: 'rgb(165,72,57)',   label: 'Built-up (low)' },
+    { color: 'rgb(215,207,190)', label: 'Desert / other' },
+  ]
+};
+
+// ── Init Leaflet with Simple CRS (pixel coords) ───────────────────────
+// L.CRS.Simple uses raw pixel coordinates — the image always fills the
+// container exactly at minZoom; higher zooms zoom into the pixels.
+const map = L.map('map', {
+  crs: L.CRS.Simple,
+  zoomControl: true,
+  attributionControl: false,
+  maxBoundsViscosity: 1.0,
+});
+
+// ── Active overlay ────────────────────────────────────────────────────
+let activeOverlay = null;
+
+function layerBounds(cfg) {
+  // In CRS.Simple: [0,0] = bottom-left, [h,w] = top-right
+  return [[0, 0], [cfg.h, cfg.w]];
+}
+
+function loadLayer(key) {
+  const cfg = LAYERS[key];
+  const bounds = layerBounds(cfg);
+
+  if (activeOverlay) map.removeLayer(activeOverlay);
+
+  activeOverlay = L.imageOverlay(cfg.image, bounds, { opacity: 1.0 }).addTo(map);
+
+  // fitBounds fills the container exactly with the image; lock that as minZoom
+  map.setMaxBounds(bounds);
+  map.fitBounds(bounds, { animate: false, padding: [0, 0] });
+  map.setMinZoom(map.getZoom());
+
+  // Update legend
+  document.getElementById('legend-title').textContent =
+    key === 'suitability' ? 'Suitability' : 'Land Cover';
+  const items = LEGENDS[cfg.legend];
+  document.getElementById('legend-items').innerHTML = items.map(item =>
+    `<div class="legend-row">
+       <div class="legend-swatch" style="background:${item.color}"></div>
+       <span>${item.label}</span>
+     </div>`
+  ).join('');
+
+  // Update info text
+  document.getElementById('info-text').textContent = cfg.info;
+}
+
+// ── Button wiring ────────────────────────────────────────────────────
+document.querySelectorAll('.layer-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.layer-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    loadLayer(btn.dataset.layer);
+  });
+});
+
+// Load default layer
+loadLayer('uae');
+</script>
+</body>
+</html>

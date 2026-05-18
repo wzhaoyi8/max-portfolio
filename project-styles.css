@@ -32,13 +32,14 @@
 /* ── Hero ── */
 .project-hero {
   width: 100%;
-  max-height: 80vh;
+  aspect-ratio: 5 / 2;
   overflow: hidden;
 }
 .project-hero img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center bottom;
   display: block;
 }
 
@@ -149,17 +150,109 @@
   display: block;
 }
 
-/* ── PDF Embed ── */
-.pdf-wrap {
-  margin-top: 2.5rem;
+/* ── Prototype photo grid (transparent-bg images) ── */
+.proto-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin-top: 2rem;
+  align-items: end;
+}
+.proto-grid img {
+  width: 100%;
+  display: block;
+}
+.proto-grid .img-caption { margin-top: 0.5rem; }
+
+/* ── Map iframe embed ── */
+.map-embed-wrap {
+  margin-top: 2rem;
   width: 100%;
   border: 1px solid var(--border);
 }
-.pdf-wrap iframe {
+.map-embed-wrap iframe {
   width: 100%;
-  height: 90vh;
+  height: 560px;
   display: block;
   border: none;
+}
+.map-embed-wrap .img-caption {
+  padding: 0.75rem 1rem;
+  border-top: 1px solid var(--border);
+}
+
+/* ── Content placeholder ── */
+.placeholder {
+  width: 100%;
+  aspect-ratio: 16 / 7;
+  margin-top: 2rem;
+  background: #ede9e2;
+  border: 1px dashed #c8c2ba;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.placeholder span {
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #a09890;
+  text-align: center;
+  padding: 0 2rem;
+}
+/* Smaller placeholder inside grid cells */
+.img-grid-2 .placeholder,
+.img-grid-3 .placeholder {
+  aspect-ratio: 4 / 3;
+  margin-top: 0;
+}
+
+@media (max-width: 768px) {
+  .proto-grid { grid-template-columns: 1fr; }
+  .map-embed-wrap iframe { height: 420px; }
+}
+
+/* ── PDF Viewer (canvas-rendered, no browser UI) ── */
+.pdf-viewer {
+  width: 100%;
+  margin-top: 2.5rem;
+}
+.pdf-viewer canvas {
+  width: 100%;
+  display: block;
+  margin-bottom: 3px;
+}
+.pdf-viewer canvas:last-child { margin-bottom: 0; }
+
+/* ── PDF Pending placeholder ── */
+.pdf-wrap.pdf-pending {
+  height: 12rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--border);
+  margin-top: 2.5rem;
+}
+.pdf-wrap.pdf-pending p {
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+/* ── PDF Pending ── */
+.pdf-wrap.pdf-pending {
+  height: 12rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+}
+.pdf-wrap.pdf-pending p {
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
 }
 
 /* ── Tags ── */

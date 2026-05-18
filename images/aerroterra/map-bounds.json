@@ -1,0 +1,56 @@
+{
+  "uae": {
+    "image": "images/aerroterra/map-uae-landcover.png",
+    "leaflet_bounds": [
+      [
+        22.5,
+        51.0
+      ],
+      [
+        26.5,
+        56.5
+      ]
+    ],
+    "center": [
+      24.0,
+      53.5
+    ],
+    "zoom": 7
+  },
+  "abu_dhabi": {
+    "image": "images/aerroterra/map-abudhabi-landcover.png",
+    "leaflet_bounds": [
+      [
+        23.9,
+        53.8
+      ],
+      [
+        25.2,
+        56.0
+      ]
+    ],
+    "center": [
+      24.45,
+      54.35
+    ],
+    "zoom": 10
+  },
+  "suitability": {
+    "image": "images/aerroterra/map-suitability.png",
+    "leaflet_bounds": [
+      [
+        23.9,
+        53.8
+      ],
+      [
+        25.2,
+        56.0
+      ]
+    ],
+    "center": [
+      24.45,
+      54.35
+    ],
+    "zoom": 10
+  }
+}

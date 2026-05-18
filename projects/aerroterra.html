@@ -23,7 +23,7 @@
     <div class="project-header-meta">
       <div class="meta-row">
         <span class="meta-label">Subtitle</span>
-        <span class="meta-value">TPMS-Based Ceramic Façade Farming System for Urban Microclimate &amp; Ecological Adaptation</span>
+        <span class="meta-value">TPMS-Based Ceramic Façade System for Urban Microclimate &amp; Ecological Adaptation</span>
       </div>
       <div class="meta-row">
         <span class="meta-label">Category</span>
@@ -46,106 +46,117 @@
 
   <div class="project-body">
 
+    <!-- ══ 01 RESEARCH QUESTION ══════════════════════════════════════ -->
     <div class="project-section">
-      <p class="section-label">Concept</p>
+      <p class="section-label">Research Question</p>
       <div class="section-text">
-        <p>AerroTerra proposes a new façade typology that moves beyond enclosure — turning building skins into ecological interfaces that simultaneously support urban agriculture, regulate microclimate, and create reciprocal relationships between architecture and living systems.</p>
-        <p>At its core is a ceramic module derived from Triply Periodic Minimal Surface (TPMS) geometry. TPMS structures maximize surface area within minimal volume, enabling the module to host plant root systems, manage drainage, and perform passive climate regulation — all within a single architectural element.</p>
+        <p>Can a building façade simultaneously act as an ecological interface, a passive climate regulator, and a data-generating performance node — without adding structural load or operational complexity?</p>
+        <p>AerroTerra proposes a ceramic module derived from Triply Periodic Minimal Surface (TPMS) geometry that turns the building skin into a living system: hosting aeroponic root structures, dissipating heat through evapotranspiration, and laying the physical groundwork for real-time building performance sensing.</p>
       </div>
     </div>
 
+    <!-- ══ 02 TPMS MODULE SYSTEM ══════════════════════════════════════ -->
     <div class="project-section">
-      <p class="section-label">Parametric Form Optimization — Grasshopper</p>
+      <p class="section-label">TPMS Module System — Grasshopper</p>
       <div class="section-text">
-        <p>The system was developed through an iterative parametric workflow in Grasshopper, using TPMS equations as the geometric and performative basis. Parameters including wall thickness, porosity, curvature, and module aggregation logic were continuously adjusted in response to structural behavior, planting capacity, and fabrication constraints.</p>
-        <p>Eight module variants were generated and evaluated across four plant typologies: hydroseeding moss, aeroponic crops, microgreens, and coconut fiber root structures. Each variant was assessed across axonometric, transparent, section, and plan views to verify planting viability and drainage performance.</p>
+        <p>TPMS (Triply Periodic Minimal Surfaces) are the only geometric family that simultaneously maximises surface area, minimises material volume, and self-organises into structurally efficient lattices — making them uniquely suited to host plant root systems, manage drainage, and regulate airflow within a single ceramic element.</p>
+        <p>The parametric workflow in Grasshopper evaluates eight module variants across four performance dimensions: planting cavity volume, drainage gradient, porosity, and fabrication feasibility. Wall thickness, porosity, and curvature are modulated in real time to test behaviour across TPMS surface families.</p>
       </div>
 
-      <!-- DROP IN: images/aerroterra/grasshopper-overview.png -->
+      <!-- 1 — Grasshopper script -->
       <div class="img-full">
-        <img src="../images/aerroterra/grasshopper-overview.png" alt="Grasshopper parametric workflow">
+        <img src="../images/aerroterra/1gh script.png" alt="Grasshopper parametric script">
         <p class="img-caption">Grasshopper canvas — TPMS equation-driven parametric workflow</p>
       </div>
 
-      <div class="img-grid-2">
-        <div>
-          <img src="../images/aerroterra/tpms-equations.png" alt="TPMS equations">
-          <p class="img-caption">TPMS surface equations and parameter range</p>
-        </div>
-        <div>
-          <img src="../images/aerroterra/module-matrix.png" alt="Module variants">
-          <p class="img-caption">8 module variants — axon / transparent / section / plan</p>
-        </div>
-      </div>
-
-      <!-- DROP IN GIF: images/aerroterra/parametric-variation.gif -->
+      <!-- 2 — Parametric customisation GIF -->
       <div class="gif-wrap">
-        <img src="../images/aerroterra/parametric-variation.gif" alt="Parametric variation">
-        <p class="img-caption">Real-time parametric variation — wall thickness &amp; porosity modulation</p>
+        <img src="../images/aerroterra/2tpms-customization.gif" alt="TPMS parametric variation">
+        <p class="img-caption">Real-time parametric variation — wall thickness &amp; porosity modulation across TPMS families</p>
       </div>
     </div>
 
+    <!-- ══ 03 PHYSICAL PROTOTYPING ════════════════════════════════════ -->
     <div class="project-section">
-      <p class="section-label">Material Research — Ceramic Fabrication</p>
+      <p class="section-label">Physical Prototyping — Slip Casting</p>
       <div class="section-text">
-        <p>The project is currently in the prototyping stage, testing two ceramic forming methods: slip casting and press molding. Multiple strategies of segmentation, mold design, and part assembly are being evaluated for precision, repeatability, and production feasibility.</p>
-        <p>The goal is to understand how the module behaves as a physical ceramic object through each step of the making process — identifying a practical path toward larger architectural applications.</p>
+        <p>Three TPMS surface families were physically realised through slip casting: the Schwartz P (planar, high stacking density), the Schwartz D (curved, larger planting cavities), and the Gyroid (saddle surface, maximum internal channel complexity). Each tests a distinct set of fabrication questions — mold segmentation strategy, wall thickness uniformity, and cavity geometry under ceramic shrinkage.</p>
+        <p>The modules are currently unfired greenware, awaiting bisque and glaze cycles. The next fabrication milestone is integrating a micro-mist water delivery channel into the casting process before the final glaze firing.</p>
       </div>
 
-      <div class="img-grid-3">
+      <!-- 3 · 4 · 5 — Module photos, left to right -->
+      <div class="proto-grid">
         <div>
-          <img src="../images/aerroterra/prototype-01.png" alt="Mold preparation">
-          <p class="img-caption">Mold preparation</p>
+          <img src="../images/aerroterra/3Module1-3.jpg" alt="Schwartz P module cluster">
+          <p class="img-caption">Schwartz P — planar array, high panel density</p>
         </div>
         <div>
-          <img src="../images/aerroterra/prototype-02.png" alt="Slip casting">
-          <p class="img-caption">Slip casting test</p>
+          <img src="../images/aerroterra/4Module4-6.jpg" alt="Schwartz D module cluster">
+          <p class="img-caption">Schwartz D — curved cavities, larger root volume</p>
         </div>
         <div>
-          <img src="../images/aerroterra/prototype-03.png" alt="Fired module">
-          <p class="img-caption">Fired ceramic module</p>
+          <img src="../images/aerroterra/5Module7-8.jpg" alt="Gyroid module">
+          <p class="img-caption">Gyroid — saddle surface, maximum channel complexity</p>
         </div>
       </div>
 
-      <!-- DROP IN GIF: images/aerroterra/fabrication-process.gif -->
-      <div class="gif-wrap">
-        <img src="../images/aerroterra/fabrication-process.gif" alt="Fabrication process">
-        <p class="img-caption">From digital model to ceramic prototype — fabrication sequence</p>
+      <!-- 6 · 7 — Render + prototype GIF, side by side -->
+      <div class="img-grid-2" style="margin-top:2rem;">
+        <div>
+          <img src="../images/aerroterra/6render.jpg" alt="AerroTerra facade render">
+          <p class="img-caption">Façade system render — module aggregation at panel scale</p>
+        </div>
+        <div>
+          <img src="../images/aerroterra/7prototype.gif" alt="Prototype animation">
+          <p class="img-caption">Prototype sequence — slip casting to assembled module</p>
+        </div>
       </div>
     </div>
 
+    <!-- ══ 04 SITE INTELLIGENCE ═══════════════════════════════════════ -->
     <div class="project-section">
-      <p class="section-label">System Integration — Façade Assembly</p>
+      <p class="section-label">Site Intelligence — UAE Environmental Analysis</p>
       <div class="section-text">
-        <p>Individual modules aggregate into a continuous façade panel system, with mounting hardware designed for standard curtain wall integration. The assembled system supports multiple plant species simultaneously, creating a living surface that adapts seasonally to local microclimate conditions.</p>
+        <p>Abu Dhabi concentrates three compounding crises that AerroTerra directly addresses: peak summer temperatures reaching 44 °C drive HVAC cooling to 70 % of peak electricity load; near-total soil salinisation (>10,000 ppm groundwater salinity across &gt;80 % of the emirate) makes in-ground agriculture structurally impossible; and the city's built-up fabric expands with almost no tree canopy, eliminating passive cooling from vegetation.</p>
+        <p>The interactive map below layers ESA WorldCover 2021 land classification with a derived deployment suitability index — identifying which urban zones have the highest density of façade area, the greatest heat stress, and the largest ecological deficit.</p>
       </div>
 
-      <div class="img-full">
-        <img src="../images/aerroterra/facade-assembly.png" alt="Facade assembly">
-        <p class="img-caption">Module aggregation and façade mounting system</p>
-      </div>
-
-      <div class="img-grid-2">
-        <div>
-          <img src="../images/aerroterra/installed-view.png" alt="Installed facade">
-          <p class="img-caption">Installed façade — full panel view</p>
-        </div>
-        <div>
-          <img src="../images/aerroterra/detail-closeup.png" alt="Module detail">
-          <p class="img-caption">Module detail with planted root system</p>
-        </div>
+      <div class="map-embed-wrap">
+        <iframe src="aerroterra-map.html" title="AerroTerra site intelligence map" allowfullscreen></iframe>
+        <p class="img-caption">Interactive — switch layers: UAE Overview · Abu Dhabi Detail · Deployment Suitability<br>Data: ESA WorldCover 2021 · CartoDB Positron basemap</p>
       </div>
     </div>
 
+    <!-- ══ 05 PERFORMANCE INTELLIGENCE ═══════════════════════════════ -->
+    <div class="project-section">
+      <p class="section-label">Performance Intelligence — Toward Digital Twins</p>
+      <div class="section-text">
+        <p>The built-up fabric of Abu Dhabi accounts for an estimated USD 2.8 billion HVAC market by 2030 (CAGR 5.6 %). Most of that energy is wasted through poor operational decisions, not poor design — because no feedback loop connects the building skin to the systems managing it.</p>
+        <p>AerroTerra is designed from the outset as a sensor infrastructure. Each ceramic module hosts cavities sized to receive soil moisture, PM 2.5, and microclimate temperature probes. Aggregated across a façade panel, these become a real-time data mesh: a physical layer that feeds the digital twin and enables ML-driven HVAC optimisation and adaptive irrigation scheduling.</p>
+        <p>The research gap this occupies sits between computational design (Rhino / Grasshopper) and live sensor pipelines — a domain where designers trained in parametric spatial reasoning can contribute what data engineers cannot: material logic, ecological system understanding, and spatial typology.</p>
+      </div>
+
+      <!-- PLACEHOLDER: Digital twin architecture diagram -->
+      <div class="placeholder img-full">
+        <span>Digital twin architecture — Ceramic module → Sensor node → ML pipeline → HVAC optimisation loop</span>
+      </div>
+    </div>
+
+    <!-- ══ 06 TAGS ════════════════════════════════════════════════════ -->
     <div class="project-section">
       <p class="section-label">Tags</p>
       <div class="tag-row">
         <span class="tag">TPMS Geometry</span>
         <span class="tag">Grasshopper</span>
         <span class="tag">Ceramic Fabrication</span>
-        <span class="tag">Vertical Farming</span>
-        <span class="tag">Adaptive Façade</span>
+        <span class="tag">Slip Casting</span>
+        <span class="tag">Aeroponic Façade</span>
         <span class="tag">Passive Microclimate</span>
+        <span class="tag">Building Performance</span>
+        <span class="tag">Digital Twin</span>
+        <span class="tag">AI-Driven HVAC</span>
+        <span class="tag">Site Intelligence</span>
+        <span class="tag">ESA WorldCover</span>
         <span class="tag">Patent Pending</span>
         <span class="tag">Harvard Thesis</span>
       </div>
