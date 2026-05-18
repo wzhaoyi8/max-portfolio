@@ -181,6 +181,36 @@ nav {
   color: var(--muted);
 }
 
+/* ── Sub-project entry (within a homepage card) ── */
+.project-sub-entry {
+  display: flex;
+  gap: 0.6rem;
+  margin-top: 0.9rem;
+  padding-top: 0.9rem;
+  border-top: 1px solid var(--border);
+  align-items: flex-start;
+}
+.sub-entry-marker {
+  font-size: 11px;
+  color: var(--muted);
+  flex-shrink: 0;
+  padding-top: 0.15rem;
+  opacity: 0.6;
+}
+.sub-entry-name {
+  font-family: var(--font-serif);
+  font-size: 13px;
+  color: var(--text);
+  line-height: 1.35;
+  margin-bottom: 0.2rem;
+}
+.sub-entry-tags {
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
 /* ── Footer ── */
 footer {
   max-width: var(--max-width);
