@@ -15,7 +15,7 @@
   </nav>
 
   <div class="project-hero">
-    <img src="../images/digital-ceramics-cover.png" alt="Robotic Low Relief">
+    <img src="../images/robotic-low-relief/before-glazing.jpg" alt="Robotic Low Relief — carved ceramic tiles">
   </div>
 
   <div class="project-header">
@@ -34,8 +34,8 @@
         <span class="meta-value">Spring 2026</span>
       </div>
       <div class="meta-row">
-        <span class="meta-label">Team</span>
-        <span class="meta-value">Max Zhaoyi Wang, Shannon Lee</span>
+        <span class="meta-label">Author</span>
+        <span class="meta-value">Max Zhaoyi Wang</span>
       </div>
       <div class="meta-row">
         <span class="meta-label">Tools</span>
@@ -46,12 +46,12 @@
 
   <div class="project-body">
 
-    <!-- ── Main Project ── -->
+    <!-- ── Overview ── -->
     <div class="project-section">
       <p class="section-label">Overview</p>
       <div class="section-text">
         <p>This project translates parametric geometry into physical surface relief through robotic fabrication. A low-relief topography is designed in Grasshopper using image-sampled height fields, then converted into robot-readable toolpaths via the Robots plugin for KUKA arm control. The output is a set of four ceramic clay tiles carved with a continuous striated landscape — a direct transcription from digital surface to material texture.</p>
-        <p>The workflow navigates the full design-to-fabrication pipeline: parametric form generation, toolpath simulation and collision checking, corner approach logic, and physical carving on unfired clay slabs in the GSD Robotics Lab. Troubleshooting edge conditions and surface registration were key challenges resolved through iterative on-robot testing.</p>
+        <p>The workflow navigates the full design-to-fabrication pipeline: parametric form generation, toolpath simulation and collision checking, corner approach logic, and physical carving on unfired clay slabs in the GSD Robotics Lab.</p>
       </div>
       <div class="tag-row">
         <span class="tag">Robotic Fabrication</span>
@@ -65,9 +65,43 @@
       </div>
     </div>
 
+    <!-- ── Before / After Glazing ── -->
     <div class="project-section">
-      <p class="section-label">Full Documentation — Robotic Low Relief</p>
-      <div class="pdf-viewer" data-src="../pdfs/digital-ceramics.pdf"></div>
+      <p class="section-label">Before Glazing</p>
+      <div class="img-full">
+        <img src="../images/robotic-low-relief/before-glazing.jpg" alt="Before Glazing — four carved ceramic tiles">
+        <p class="img-caption">Four ceramic clay tiles — carved low-relief surface before glaze firing</p>
+      </div>
+
+      <p class="section-label" style="margin-top: 3rem">After Glazing</p>
+      <div class="placeholder" style="aspect-ratio: 5511 / 1652; margin-top: 0;">
+        <span>After Glazing — Coming Soon</span>
+      </div>
+      <p class="img-caption" style="margin-top: 0.5rem">Glaze firing in progress</p>
+    </div>
+
+    <!-- ── Grasshopper Script ── -->
+    <div class="project-section">
+      <p class="section-label">Grasshopper Script</p>
+      <div class="img-full">
+        <img src="../images/robotic-low-relief/gh-script.png" alt="Grasshopper definition — surface to toolpath">
+        <p class="img-caption">Grasshopper parametric definition — image-sampled height field to KUKA robot toolpath via Robots plugin</p>
+      </div>
+    </div>
+
+    <!-- ── Process Videos ── -->
+    <div class="project-section">
+      <p class="section-label">Process</p>
+      <div class="rlr-video-pair">
+        <div class="rlr-video-item">
+          <p class="img-caption" style="margin-bottom: 0.6rem; margin-top: 0;">Grasshopper Simulation</p>
+          <video src="../videos/gh-simulation.mov" muted loop playsinline controls></video>
+        </div>
+        <div class="rlr-video-item">
+          <p class="img-caption" style="margin-bottom: 0.6rem; margin-top: 0;">Robotic Carving</p>
+          <video src="../videos/robot-carving.mp4" muted loop playsinline controls></video>
+        </div>
+      </div>
     </div>
 
     <!-- ── Sub-Project ── -->
@@ -90,6 +124,16 @@
   </div>
 
   <style>
+    .rlr-video-pair {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.25rem;
+      margin-top: 2rem;
+    }
+    .rlr-video-item video {
+      width: 100%;
+      display: block;
+    }
     .dc-sub {
       border-top: 1px solid var(--border);
       padding-top: 3rem;
@@ -99,7 +143,9 @@
       font-size: 1.1rem;
       font-weight: 400;
       margin-bottom: 0.75rem;
-      color: var(--text);
+    }
+    @media (max-width: 768px) {
+      .rlr-video-pair { grid-template-columns: 1fr; }
     }
   </style>
 
@@ -110,6 +156,5 @@
     </div>
   </a>
 
-  <script src="../pdf-viewer.js"></script>
 </body>
 </html>
