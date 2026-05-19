@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About — Max Zhaoyi Wang</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+
+    /* ── About layout ── */
+    .about-wrap {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: clamp(4rem, 8vw, 7rem) var(--pad) clamp(3rem, 6vw, 5rem);
+      display: grid;
+      grid-template-columns: 340px 1fr;
+      gap: clamp(3rem, 6vw, 6rem);
+      align-items: start;
+      border-bottom: 1px solid var(--border);
+    }
+
+    /* Photo */
+    .about-photo {
+      position: sticky;
+      top: calc(1.25rem * 2 + 1px + 2.5rem); /* nav height */
+    }
+    .about-photo img {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
+      display: block;
+      filter: grayscale(8%);
+    }
+
+    /* Bio */
+    .about-name {
+      font-family: var(--font-serif);
+      font-weight: 400;
+      font-size: clamp(1.75rem, 3vw, 2.5rem);
+      line-height: 1.15;
+      margin-bottom: 0.5rem;
+    }
+    .about-role {
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 2.5rem;
+    }
+    .about-text p {
+      font-size: 15px;
+      line-height: 1.85;
+      color: var(--text);
+      max-width: 600px;
+    }
+    .about-text p + p {
+      margin-top: 1.2em;
+    }
+
+    /* ── Skills grid ── */
+    .about-skills {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: clamp(3rem, 5vw, 4.5rem) var(--pad);
+      border-bottom: 1px solid var(--border);
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2.5rem 3rem;
+    }
+    .skill-group-label {
+      font-size: 10px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 0.6rem;
+    }
+    .skill-items {
+      font-size: 13px;
+      line-height: 1.75;
+      color: var(--text);
+    }
+    .skill-items span {
+      display: block;
+    }
+
+    /* ── Open to ── */
+    .about-open {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: clamp(3rem, 5vw, 4.5rem) var(--pad);
+      border-bottom: 1px solid var(--border);
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      gap: 3rem;
+      align-items: start;
+    }
+    .open-heading {
+      font-size: 10px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      padding-top: 0.2rem;
+    }
+    .open-body {
+      font-size: 13px;
+      line-height: 1.75;
+      color: var(--text);
+    }
+    .open-body p { margin-bottom: 0.6rem; }
+    .open-body .open-note {
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 1rem;
+    }
+
+    /* Role tags */
+    .role-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 1.25rem;
+    }
+    .role-tag {
+      font-size: 11px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      border: 1px solid var(--border);
+      padding: 0.3rem 0.75rem;
+      color: var(--muted);
+    }
+
+    /* ── Portfolio CTA ── */
+    .about-cta {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: clamp(2.5rem, 4vw, 3.5rem) var(--pad);
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .cta-label {
+      font-size: 10px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      flex-shrink: 0;
+    }
+    .cta-link {
+      font-family: var(--font-serif);
+      font-size: 1.2rem;
+      color: var(--text);
+      text-decoration: none;
+      border-bottom: 1px solid var(--text);
+      padding-bottom: 2px;
+      transition: opacity 0.2s;
+    }
+    .cta-link:hover { opacity: 0.5; }
+
+    /* ── Responsive ── */
+    @media (max-width: 900px) {
+      .about-wrap { grid-template-columns: 1fr; gap: 2.5rem; }
+      .about-photo { position: static; max-width: 300px; }
+      .about-skills { grid-template-columns: 1fr 1fr; }
+      .about-open { grid-template-columns: 1fr; gap: 1rem; }
+    }
+    @media (max-width: 600px) {
+      .about-skills { grid-template-columns: 1fr; }
+    }
+
+  </style>
+</head>
+<body>
+
+  <header>
+    <nav>
+      <a href="index.html" class="nav-name">Max Zhaoyi Wang</a>
+      <div class="nav-links">
+        <a href="index.html#projects">Work</a>
+        <a href="about.html" style="color:var(--text)">About</a>
+        <a href="mailto:zhaoyi_wang@gsd.harvard.edu">Contact</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- ── Bio ── -->
+    <div class="about-wrap">
+      <div class="about-photo">
+        <img src="about/profile.jpg" alt="Max Zhaoyi Wang">
+      </div>
+
+      <div class="about-bio">
+        <h1 class="about-name">Max Zhaoyi Wang</h1>
+        <p class="about-role">MDes Ecologies · Harvard GSD · LEED Green Associate</p>
+
+        <div class="about-text">
+          <p>I work at the intersection of building technology and artificial intelligence — designing the physical and data infrastructure that makes adaptive, high-performance buildings possible.</p>
+
+          <p>My entry point is material: TPMS-derived ceramic façade systems, parametric fabrication, and physical prototyping. These aren't just design objects — they are sensor platforms, structured to host moisture probes, particulate meters, and mist delivery channels from the moment of casting. The building skin becomes the first layer of a data mesh.</p>
+
+          <p>That mesh feeds digital twins, ML pipelines, and ultimately the operational decisions — HVAC setpoints, irrigation schedules, energy load curves — that determine whether a building performs as designed or bleeds energy year after year. This is the gap I occupy: the translation layer between physical form and intelligent building systems, where computational design logic meets AI infrastructure and real estate value.</p>
+
+          <p>At Harvard GSD I study Ecologies alongside Real Estate & Sustainability — combining environmental performance research with ESG quantification (Scope 1/2/3, GRESB, TCFD) and real estate financial modelling. I've built prototypes, filed patents, and translated technical findings into investment theses.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Skills ── -->
+    <section class="about-skills">
+      <div>
+        <p class="skill-group-label">Computational Design</p>
+        <div class="skill-items">
+          <span>Rhino · Grasshopper</span>
+          <span>Revit · ArcGIS</span>
+          <span>Python · PyTorch</span>
+          <span>Computer Vision</span>
+        </div>
+      </div>
+      <div>
+        <p class="skill-group-label">Building Performance</p>
+        <div class="skill-items">
+          <span>Digital Twin Architecture</span>
+          <span>Sensor Network Design</span>
+          <span>HVAC Optimisation</span>
+          <span>LCA · MFA · LEED GA</span>
+        </div>
+      </div>
+      <div>
+        <p class="skill-group-label">ESG &amp; Finance</p>
+        <div class="skill-items">
+          <span>Scope 1/2/3 · TCFD</span>
+          <span>GRESB · GRI · SASB · CDP</span>
+          <span>Pro Formas · DCF</span>
+          <span>Risk Sensitivity Analysis</span>
+        </div>
+      </div>
+      <div>
+        <p class="skill-group-label">Fabrication</p>
+        <div class="skill-items">
+          <span>Ceramic Slip Casting</span>
+          <span>Robotic Toolpath (KUKA)</span>
+          <span>3D Printing</span>
+          <span>TPMS Mould Segmentation</span>
+        </div>
+      </div>
+      <div>
+        <p class="skill-group-label">Research</p>
+        <div class="skill-items">
+          <span>Patent Filing (Pending)</span>
+          <span>Harvard Innovation Lab</span>
+          <span>Salata Institute Fellow</span>
+          <span>F-1 OPT · No H-1B required</span>
+        </div>
+      </div>
+      <div>
+        <p class="skill-group-label">Recognition</p>
+        <div class="skill-items">
+          <span>Harvard President's Innovation</span>
+          <span>Challenge — Semifinalist</span>
+          <span>Asian Design Award — Gold</span>
+          <span>GSD Innovation Lab Grant</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Open to ── -->
+    <section class="about-open">
+      <p class="open-heading">Open To</p>
+      <div class="open-body">
+        <p>Summer 2026 internships and full-time roles beginning May 2027, at the frontier of building intelligence and climate tech.</p>
+
+        <div class="role-tags">
+          <span class="role-tag">Building Technology</span>
+          <span class="role-tag">PropTech</span>
+          <span class="role-tag">Smart Buildings</span>
+          <span class="role-tag">AI Infrastructure</span>
+          <span class="role-tag">Climate Tech</span>
+          <span class="role-tag">Real Estate ESG</span>
+          <span class="role-tag">Energy Infrastructure</span>
+          <span class="role-tag">Sustainability Consulting</span>
+        </div>
+
+        <p class="open-note">Cambridge, MA &nbsp;·&nbsp; F-1 OPT · No H-1B sponsorship required</p>
+      </div>
+    </section>
+
+    <!-- ── Portfolio CTA ── -->
+    <div class="about-cta">
+      <span class="cta-label">Full Portfolio</span>
+      <!-- TODO: replace href with your Google Drive / Dropbox share link -->
+      <a href="about/portfolio.pdf" target="_blank" rel="noopener" class="cta-link">
+        Download PDF ↗
+      </a>
+    </div>
+
+  </main>
+
+  <footer>
+    <span>Max Zhaoyi Wang &nbsp;©&nbsp; 2025</span>
+    <a href="mailto:zhaoyi_wang@gsd.harvard.edu">zhaoyi_wang@gsd.harvard.edu</a>
+  </footer>
+
+</body>
+</html>
