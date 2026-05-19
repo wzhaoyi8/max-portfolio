@@ -95,11 +95,11 @@
       <div class="rlr-video-pair">
         <div class="rlr-video-item">
           <p class="img-caption" style="margin-bottom: 0.6rem; margin-top: 0;">Grasshopper Simulation</p>
-          <video src="../videos/gh-simulation.mov" muted loop playsinline controls></video>
+          <video src="../videos/gh-simulation.mov" autoplay muted loop playsinline controls></video>
         </div>
         <div class="rlr-video-item">
           <p class="img-caption" style="margin-bottom: 0.6rem; margin-top: 0;">Robotic Carving</p>
-          <video src="../videos/robot-carving.mp4" muted loop playsinline controls></video>
+          <video src="../videos/robot-carving.mp4" autoplay muted loop playsinline controls></video>
         </div>
       </div>
     </div>
@@ -130,8 +130,15 @@
       gap: 1.25rem;
       margin-top: 2rem;
     }
+    /* Lock both video cells to the same aspect ratio */
+    .rlr-video-item {
+      overflow: hidden;
+      aspect-ratio: 4 / 5;
+    }
     .rlr-video-item video {
       width: 100%;
+      height: 100%;
+      object-fit: cover;
       display: block;
     }
     .dc-sub {
