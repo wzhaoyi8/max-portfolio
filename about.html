@@ -7,42 +7,37 @@
   <link rel="stylesheet" href="style.css">
   <style>
 
-    /* ── About layout ── */
+    /* ── Bio ── */
     .about-wrap {
       max-width: var(--max-width);
       margin: 0 auto;
-      padding: clamp(4rem, 8vw, 7rem) var(--pad) clamp(3rem, 6vw, 5rem);
+      padding: clamp(4rem, 8vw, 7rem) var(--pad) clamp(3rem, 5vw, 4.5rem);
       display: grid;
-      grid-template-columns: 340px 1fr;
+      grid-template-columns: 300px 1fr;
       gap: clamp(3rem, 6vw, 6rem);
       align-items: start;
       border-bottom: 1px solid var(--border);
     }
-
-    /* Photo */
     .about-photo {
       position: sticky;
-      top: calc(1.25rem * 2 + 1px + 2.5rem); /* nav height */
+      top: calc(1.25rem * 2 + 20px + 2.5rem);
     }
     .about-photo img {
       width: 100%;
-      aspect-ratio: 1 / 1;
+      aspect-ratio: 1;
       object-fit: cover;
       display: block;
-      filter: grayscale(8%);
     }
-
-    /* Bio */
     .about-name {
       font-family: var(--font-serif);
       font-weight: 400;
-      font-size: clamp(1.75rem, 3vw, 2.5rem);
+      font-size: clamp(1.75rem, 3vw, 2.4rem);
       line-height: 1.15;
-      margin-bottom: 0.5rem;
+      margin-bottom: 0.45rem;
     }
     .about-role {
-      font-size: 12px;
-      letter-spacing: 0.08em;
+      font-size: 11px;
+      letter-spacing: 0.1em;
       text-transform: uppercase;
       color: var(--muted);
       margin-bottom: 2.5rem;
@@ -51,13 +46,36 @@
       font-size: 15px;
       line-height: 1.85;
       color: var(--text);
-      max-width: 600px;
+      max-width: 580px;
     }
-    .about-text p + p {
-      margin-top: 1.2em;
+    .about-text p + p { margin-top: 1.25em; }
+
+    /* ── Vision diagram ── */
+    .vision-section {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: clamp(3rem, 5vw, 4.5rem) var(--pad);
+      border-bottom: 1px solid var(--border);
+    }
+    .vision-label {
+      font-size: 10px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 2rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .vision-svg-wrap {
+      width: 100%;
+      max-width: 680px;
+    }
+    .vision-svg-wrap svg {
+      width: 100%;
+      height: auto;
     }
 
-    /* ── Skills grid ── */
+    /* ── Skills ── */
     .about-skills {
       max-width: var(--max-width);
       margin: 0 auto;
@@ -69,25 +87,22 @@
     }
     .skill-group-label {
       font-size: 10px;
-      letter-spacing: 0.12em;
+      letter-spacing: 0.1em;
       text-transform: uppercase;
       color: var(--muted);
       margin-bottom: 0.6rem;
     }
     .skill-items {
       font-size: 13px;
-      line-height: 1.75;
+      line-height: 1.8;
       color: var(--text);
     }
-    .skill-items span {
-      display: block;
-    }
 
-    /* ── Open to ── */
+    /* ── Open To ── */
     .about-open {
       max-width: var(--max-width);
       margin: 0 auto;
-      padding: clamp(3rem, 5vw, 4.5rem) var(--pad);
+      padding: clamp(2.5rem, 4vw, 4rem) var(--pad);
       border-bottom: 1px solid var(--border);
       display: grid;
       grid-template-columns: 200px 1fr;
@@ -96,24 +111,13 @@
     }
     .open-heading {
       font-size: 10px;
-      letter-spacing: 0.12em;
+      letter-spacing: 0.1em;
       text-transform: uppercase;
       color: var(--muted);
-      padding-top: 0.2rem;
+      padding-top: 0.15rem;
     }
-    .open-body {
-      font-size: 13px;
-      line-height: 1.75;
-      color: var(--text);
-    }
-    .open-body p { margin-bottom: 0.6rem; }
-    .open-body .open-note {
-      font-size: 12px;
-      color: var(--muted);
-      margin-top: 1rem;
-    }
-
-    /* Role tags */
+    .open-body { font-size: 13px; line-height: 1.75; }
+    .open-body p { margin-bottom: 0.5rem; color: var(--text); }
     .role-tags {
       display: flex;
       flex-wrap: wrap;
@@ -128,12 +132,50 @@
       padding: 0.3rem 0.75rem;
       color: var(--muted);
     }
+    .open-note {
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 1rem;
+    }
+
+    /* ── Contact ── */
+    .about-contact {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: clamp(2.5rem, 4vw, 4rem) var(--pad);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+    .contact-row {
+      display: flex;
+      gap: 2.5rem;
+      align-items: baseline;
+    }
+    .contact-label {
+      font-size: 10px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      min-width: 60px;
+      flex-shrink: 0;
+    }
+    .contact-value {
+      font-size: 14px;
+      color: var(--text);
+      text-decoration: none;
+      transition: opacity 0.2s;
+      display: block;
+      line-height: 1.6;
+    }
+    .contact-value:hover { opacity: 0.5; }
 
     /* ── Portfolio CTA ── */
     .about-cta {
       max-width: var(--max-width);
       margin: 0 auto;
-      padding: clamp(2.5rem, 4vw, 3.5rem) var(--pad);
+      padding: clamp(2rem, 3.5vw, 3rem) var(--pad);
       display: flex;
       align-items: center;
       gap: 2rem;
@@ -148,7 +190,7 @@
     }
     .cta-link {
       font-family: var(--font-serif);
-      font-size: 1.2rem;
+      font-size: 1.15rem;
       color: var(--text);
       text-decoration: none;
       border-bottom: 1px solid var(--text);
@@ -158,13 +200,14 @@
     .cta-link:hover { opacity: 0.5; }
 
     /* ── Responsive ── */
-    @media (max-width: 900px) {
+    @media (max-width: 860px) {
       .about-wrap { grid-template-columns: 1fr; gap: 2.5rem; }
-      .about-photo { position: static; max-width: 300px; }
+      .about-photo { position: static; max-width: 260px; }
       .about-skills { grid-template-columns: 1fr 1fr; }
       .about-open { grid-template-columns: 1fr; gap: 1rem; }
+      .about-contact .contact-row { flex-direction: column; gap: 0.25rem; }
     }
-    @media (max-width: 600px) {
+    @media (max-width: 560px) {
       .about-skills { grid-template-columns: 1fr; }
     }
 
@@ -196,100 +239,263 @@
         <p class="about-role">MDes Ecologies · Harvard GSD · LEED Green Associate</p>
 
         <div class="about-text">
-          <p>I work at the intersection of building technology and artificial intelligence — designing the physical and data infrastructure that makes adaptive, high-performance buildings possible.</p>
+          <p>I believe buildings are the most underleveraged data infrastructure on the planet. As climate costs rise and cities densify, the building envelope — skin, structure, façade — is where energy is lost, data goes uncaptured, and physical form has yet to meet computational intelligence.</p>
 
-          <p>My entry point is material: TPMS-derived ceramic façade systems, parametric fabrication, and physical prototyping. These aren't just design objects — they are sensor platforms, structured to host moisture probes, particulate meters, and mist delivery channels from the moment of casting. The building skin becomes the first layer of a data mesh.</p>
+          <p>My work moves from material to system. TPMS-derived ceramic façade modules embed aeroponic agriculture, sensors, and passive thermal regulation within a single cast element. That module is the physical node — feeding a sensor mesh, which feeds a digital twin, which feeds an ML pipeline that closes the loop back to HVAC setpoints, energy load curves, and irrigation schedules.</p>
 
-          <p>That mesh feeds digital twins, ML pipelines, and ultimately the operational decisions — HVAC setpoints, irrigation schedules, energy load curves — that determine whether a building performs as designed or bleeds energy year after year. This is the gap I occupy: the translation layer between physical form and intelligent building systems, where computational design logic meets AI infrastructure and real estate value.</p>
+          <p>The larger ambition is infrastructural: 3D-printed architecture manufactured at scale, buildings globally networked through real-time performance data, data centres thermally managed by intelligent façades, and energy grids that self-regulate from building-level sensor feeds. I'm drawn to the frontier where computational design meets AI infrastructure and renewable energy — where the building becomes an active participant in the grid, not just a consumer of it.</p>
 
-          <p>At Harvard GSD I study Ecologies alongside Real Estate & Sustainability — combining environmental performance research with ESG quantification (Scope 1/2/3, GRESB, TCFD) and real estate financial modelling. I've built prototypes, filed patents, and translated technical findings into investment theses.</p>
+          <p>At Harvard GSD I study Ecologies alongside Real Estate & Sustainability. My background spans advanced materials, machine learning, interactive media, and financial modelling — built to translate environmental performance into investable infrastructure thesis.</p>
         </div>
       </div>
     </div>
+
+    <!-- ── Vision Diagram ── -->
+    <section class="vision-section">
+      <p class="vision-label">Interests &amp; Vision</p>
+      <div class="vision-svg-wrap">
+
+        <!--
+          Single SVG: 6 icons + connecting lines
+          viewBox: 0 0 620 300
+          Icon centers: Row 1 y=85, Row 2 y=235
+          Columns x=80, 310, 540
+          Icon stroke: #9cbec6  Line stroke: #cce0e6
+        -->
+        <svg viewBox="0 0 620 300" fill="none" xmlns="http://www.w3.org/2000/svg"
+             aria-label="Vision diagram — Additive Fabrication, Smart Building, Sensor Infrastructure, Digital Twin, Data Centre, Renewable Energy">
+
+          <defs>
+            <!-- Subtle arrow marker -->
+            <marker id="arr" markerWidth="6" markerHeight="6"
+                    refX="5" refY="3" orient="auto" markerUnits="strokeWidth">
+              <path d="M0,0 L6,3 L0,6 L1.5,3 Z" fill="#cce0e6"/>
+            </marker>
+          </defs>
+
+          <!-- ── Connection lines ── -->
+          <g stroke="#cce0e6" stroke-width="1" marker-end="url(#arr)">
+            <!-- Row 1 horizontal -->
+            <line x1="102" y1="85" x2="286" y2="85"/>
+            <line x1="332" y1="85" x2="516" y2="85"/>
+            <!-- Verticals -->
+            <line x1="80"  y1="108" x2="80"  y2="212"/>
+            <line x1="310" y1="108" x2="310" y2="212"/>
+            <line x1="540" y1="108" x2="540" y2="212"/>
+            <!-- Row 2 horizontal -->
+            <line x1="102" y1="235" x2="286" y2="235"/>
+            <line x1="332" y1="235" x2="516" y2="235"/>
+          </g>
+
+          <!-- ══ ICON A — Additive Fabrication (cx=80, cy=85) ══ -->
+          <g transform="translate(58,63)" stroke="#9cbec6" stroke-width="1.2">
+            <!-- Nozzle body -->
+            <path d="M6,2 L30,2 L26,14 L14,14 Z"/>
+            <!-- Nozzle tip -->
+            <path d="M14,14 L20,21 L26,14" stroke-linejoin="round"/>
+            <!-- Extruded layers -->
+            <path d="M4,26 Q11,24 20,26 Q29,28 36,26"/>
+            <path d="M4,30 Q11,28 20,30 Q29,32 36,30"/>
+            <path d="M4,34 Q11,32 20,34 Q29,36 36,34"/>
+            <!-- Droplet -->
+            <circle cx="20" cy="23" r="1.8" fill="#9cbec6" stroke="none"/>
+          </g>
+          <!-- Label A -->
+          <text x="80" y="117" text-anchor="middle" font-family="-apple-system,sans-serif"
+                font-size="7.5" letter-spacing="0.1em" fill="#aaaaaa">ADDITIVE</text>
+          <text x="80" y="126" text-anchor="middle" font-family="-apple-system,sans-serif"
+                font-size="7.5" letter-spacing="0.1em" fill="#aaaaaa">FABRICATION</text>
+
+          <!-- ══ ICON B — Smart Building (cx=310, cy=85) ══ -->
+          <g transform="translate(288,63)" stroke="#9cbec6" stroke-width="1.2">
+            <!-- Building body -->
+            <rect x="9" y="14" width="22" height="24"/>
+            <!-- Roof -->
+            <polyline points="7,14 20,5 33,14" stroke-linejoin="round"/>
+            <!-- Floor line -->
+            <line x1="4" y1="38" x2="36" y2="38"/>
+            <!-- Window dots -->
+            <circle cx="15" cy="23" r="1.8" fill="#9cbec6" stroke="none"/>
+            <circle cx="25" cy="23" r="1.8" fill="#9cbec6" stroke="none"/>
+            <circle cx="15" cy="31" r="1.8" fill="#9cbec6" stroke="none"/>
+            <circle cx="25" cy="31" r="1.8" fill="#9cbec6" stroke="none"/>
+          </g>
+          <!-- Label B -->
+          <text x="310" y="117" text-anchor="middle" font-family="-apple-system,sans-serif"
+                font-size="7.5" letter-spacing="0.1em" fill="#aaaaaa">SMART</text>
+          <text x="310" y="126" text-anchor="middle" font-family="-apple-system,sans-serif"
+                font-size="7.5" letter-spacing="0.1em" fill="#aaaaaa">BUILDING</text>
+
+          <!-- ══ ICON C — Sensor / Signal (cx=540, cy=85) ══ -->
+          <g transform="translate(518,63)" stroke="#9cbec6" stroke-width="1.2">
+            <!-- WiFi arcs (3 tiers) -->
+            <path d="M12,30 A10,10 0 0 1 28,30"/>
+            <path d="M6,24 A16,16 0 0 1 34,24"/>
+            <path d="M1,18 A21,21 0 0 1 39,18"/>
+            <!-- Center node -->
+            <circle cx="20" cy="32" r="2.5" fill="#9cbec6" stroke="none"/>
+          </g>
+          <!-- Label C -->
+          <text x="540" y="117" text-anchor="middle" font-family="-apple-system,sans-serif"
+                font-size="7.5" letter-spacing="0.1em" fill="#aaaaaa">SENSOR</text>
+          <text x="540" y="126" text-anchor="middle" font-family="-apple-system,sans-serif"
+                font-size="7.5" letter-spacing="0.1em" fill="#aaaaaa">INFRASTRUCTURE</text>
+
+          <!-- ══ ICON D — Digital Twin / AI (cx=80, cy=235) ══ -->
+          <g transform="translate(58,213)" stroke="#9cbec6" stroke-width="1.2">
+            <!-- Physical square (solid) -->
+            <rect x="3" y="6" width="19" height="19"/>
+            <!-- Digital square (dashed) -->
+            <rect x="18" y="15" width="19" height="19" stroke-dasharray="2.5,2.5"/>
+            <!-- Node at overlap -->
+            <circle cx="18" cy="15" r="2" fill="#9cbec6" stroke="none"/>
+          </g>
+          <!-- Label D -->
+          <text x="80" y="267" text-anchor="middle" font-family="-apple-system,sans-serif"
+                font-size="7.5" letter-spacing="0.1em" fill="#aaaaaa">DIGITAL TWIN</text>
+          <text x="80" y="276" text-anchor="middle" font-family="-apple-system,sans-serif"
+                font-size="7.5" letter-spacing="0.1em" fill="#aaaaaa">/ AI</text>
+
+          <!-- ══ ICON E — Data Centre (cx=310, cy=235) ══ -->
+          <g transform="translate(288,213)" stroke="#9cbec6" stroke-width="1.2">
+            <!-- Rack frame -->
+            <rect x="7" y="3" width="26" height="34"/>
+            <!-- 3 server blades -->
+            <rect x="11" y="7"  width="18" height="7"/>
+            <rect x="11" y="17" width="18" height="7"/>
+            <rect x="11" y="27" width="18" height="7"/>
+            <!-- LED dots -->
+            <circle cx="26" cy="10.5" r="1.5" fill="#9cbec6" stroke="none"/>
+            <circle cx="26" cy="20.5" r="1.5" fill="#9cbec6" stroke="none"/>
+            <circle cx="26" cy="30.5" r="1.5" fill="#9cbec6" stroke="none"/>
+          </g>
+          <!-- Label E -->
+          <text x="310" y="267" text-anchor="middle" font-family="-apple-system,sans-serif"
+                font-size="7.5" letter-spacing="0.1em" fill="#aaaaaa">DATA CENTRE</text>
+          <text x="310" y="276" text-anchor="middle" font-family="-apple-system,sans-serif"
+                font-size="7.5" letter-spacing="0.1em" fill="#aaaaaa">&amp; GRID</text>
+
+          <!-- ══ ICON F — Renewable / Solar (cx=540, cy=235) ══ -->
+          <g transform="translate(518,213)" stroke="#9cbec6" stroke-width="1.2">
+            <!-- Sun circle -->
+            <circle cx="20" cy="20" r="7"/>
+            <!-- 8 rays -->
+            <line x1="20" y1="4"    x2="20" y2="10"/>
+            <line x1="20" y1="30"   x2="20" y2="36"/>
+            <line x1="4"  y1="20"   x2="10" y2="20"/>
+            <line x1="30" y1="20"   x2="36" y2="20"/>
+            <line x1="9.5"  y1="9.5"  x2="14"  y2="14"/>
+            <line x1="30.5" y1="9.5"  x2="26"  y2="14"/>
+            <line x1="9.5"  y1="30.5" x2="14"  y2="26"/>
+            <line x1="30.5" y1="30.5" x2="26"  y2="26"/>
+          </g>
+          <!-- Label F -->
+          <text x="540" y="267" text-anchor="middle" font-family="-apple-system,sans-serif"
+                font-size="7.5" letter-spacing="0.1em" fill="#aaaaaa">RENEWABLE</text>
+          <text x="540" y="276" text-anchor="middle" font-family="-apple-system,sans-serif"
+                font-size="7.5" letter-spacing="0.1em" fill="#aaaaaa">ENERGY</text>
+
+        </svg>
+      </div>
+    </section>
 
     <!-- ── Skills ── -->
     <section class="about-skills">
       <div>
         <p class="skill-group-label">Computational Design</p>
         <div class="skill-items">
-          <span>Rhino · Grasshopper</span>
-          <span>Revit · ArcGIS</span>
-          <span>Python · PyTorch</span>
-          <span>Computer Vision</span>
-        </div>
-      </div>
-      <div>
-        <p class="skill-group-label">Building Performance</p>
-        <div class="skill-items">
-          <span>Digital Twin Architecture</span>
-          <span>Sensor Network Design</span>
-          <span>HVAC Optimisation</span>
-          <span>LCA · MFA · LEED GA</span>
-        </div>
-      </div>
-      <div>
-        <p class="skill-group-label">ESG &amp; Finance</p>
-        <div class="skill-items">
-          <span>Scope 1/2/3 · TCFD</span>
-          <span>GRESB · GRI · SASB · CDP</span>
-          <span>Pro Formas · DCF</span>
-          <span>Risk Sensitivity Analysis</span>
+          Rhino · Grasshopper<br>
+          Revit · ArcGIS<br>
+          Python · PyTorch<br>
+          Computer Vision
         </div>
       </div>
       <div>
         <p class="skill-group-label">Fabrication</p>
         <div class="skill-items">
-          <span>Ceramic Slip Casting</span>
-          <span>Robotic Toolpath (KUKA)</span>
-          <span>3D Printing</span>
-          <span>TPMS Mould Segmentation</span>
+          Ceramic Slip Casting<br>
+          Robotic Toolpath (KUKA)<br>
+          3D Printing<br>
+          TPMS Mould Design
         </div>
       </div>
       <div>
-        <p class="skill-group-label">Research</p>
+        <p class="skill-group-label">Interactive Media</p>
         <div class="skill-items">
-          <span>Patent Filing (Pending)</span>
-          <span>Harvard Innovation Lab</span>
-          <span>Salata Institute Fellow</span>
-          <span>F-1 OPT · No H-1B required</span>
+          TouchDesigner<br>
+          Generative Visuals<br>
+          Creative Coding<br>
+          P5.js · WebGL
+        </div>
+      </div>
+      <div>
+        <p class="skill-group-label">Building Systems</p>
+        <div class="skill-items">
+          Digital Twin Architecture<br>
+          Sensor Network Design<br>
+          HVAC Optimisation<br>
+          Building Performance
+        </div>
+      </div>
+      <div>
+        <p class="skill-group-label">Research &amp; Analysis</p>
+        <div class="skill-items">
+          Patent Filing (Pending)<br>
+          Financial Modelling · DCF<br>
+          ESG Analytics<br>
+          LCA · MFA
         </div>
       </div>
       <div>
         <p class="skill-group-label">Recognition</p>
         <div class="skill-items">
-          <span>Harvard President's Innovation</span>
-          <span>Challenge — Semifinalist</span>
-          <span>Asian Design Award — Gold</span>
-          <span>GSD Innovation Lab Grant</span>
+          Harvard President's Innovation<br>
+          Challenge — Semifinalist<br>
+          Asian Design Award — Gold<br>
+          LEED Green Associate
         </div>
       </div>
     </section>
 
-    <!-- ── Open to ── -->
+    <!-- ── Open To ── -->
     <section class="about-open">
       <p class="open-heading">Open To</p>
       <div class="open-body">
-        <p>Summer 2026 internships and full-time roles beginning May 2027, at the frontier of building intelligence and climate tech.</p>
-
+        <p>Summer 2026 internships and full-time roles beginning May 2027.</p>
         <div class="role-tags">
           <span class="role-tag">Building Technology</span>
           <span class="role-tag">PropTech</span>
           <span class="role-tag">Smart Buildings</span>
           <span class="role-tag">AI Infrastructure</span>
+          <span class="role-tag">Energy Infrastructure</span>
+          <span class="role-tag">Renewable Energy</span>
           <span class="role-tag">Climate Tech</span>
           <span class="role-tag">Real Estate ESG</span>
-          <span class="role-tag">Energy Infrastructure</span>
           <span class="role-tag">Sustainability Consulting</span>
         </div>
-
         <p class="open-note">Cambridge, MA &nbsp;·&nbsp; F-1 OPT · No H-1B sponsorship required</p>
       </div>
     </section>
 
+    <!-- ── Contact ── -->
+    <div class="about-contact">
+      <div class="contact-row">
+        <span class="contact-label">Phone</span>
+        <a href="tel:+16802163093" class="contact-value">+1 (680) 216-3093</a>
+      </div>
+      <div class="contact-row">
+        <span class="contact-label">Email</span>
+        <div>
+          <a href="mailto:zhaoyi_wang@gsd.harvard.edu" class="contact-value">zhaoyi_wang@gsd.harvard.edu</a>
+          <a href="mailto:zhaoyiwang6@outlook.com" class="contact-value">zhaoyiwang6@outlook.com</a>
+        </div>
+      </div>
+    </div>
+
     <!-- ── Portfolio CTA ── -->
     <div class="about-cta">
       <span class="cta-label">Full Portfolio</span>
-      <!-- TODO: replace href with your Google Drive / Dropbox share link -->
+      <!-- Replace href with your Google Drive / Dropbox share link -->
       <a href="about/portfolio.pdf" target="_blank" rel="noopener" class="cta-link">
         Download PDF ↗
       </a>
