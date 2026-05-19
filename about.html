@@ -191,15 +191,19 @@
       flex-shrink: 0;
     }
     .cta-link {
-      font-family: var(--font-serif);
-      font-size: 1.15rem;
-      color: var(--text);
+      display: inline-block;
+      font-family: var(--font-sans);
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
       text-decoration: none;
-      border-bottom: 1px solid var(--text);
+      border-bottom: 1px solid var(--border);
       padding-bottom: 2px;
-      transition: opacity 0.2s;
+      transition: color 0.2s, border-color 0.2s;
     }
-    .cta-link:hover { opacity: 0.5; }
+    .cta-link:hover { color: var(--text); border-color: var(--text); }
 
     /* ── Responsive ── */
     @media (max-width: 860px) {
