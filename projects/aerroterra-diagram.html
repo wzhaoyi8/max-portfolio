@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AerroTerra — Digital Twin Architecture</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: #ffffff;
+      color: #111111;
+      font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif;
+      -webkit-font-smoothing: antialiased;
+      padding: 1.75rem 2rem 1.5rem;
+      overflow: hidden;
+    }
+
+    /* ── Header ── */
+    #diagram-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 1.5rem;
+    }
+    #diagram-label {
+      font-size: 9px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #888888;
+    }
+    #diagram-hint {
+      font-size: 9px;
+      letter-spacing: 0.06em;
+      color: #cccccc;
+    }
+
+    /* ── Graph container ── */
+    #graph {
+      position: relative;
+      width: 100%;
+    }
+
+    /* SVG overlay for arrows */
+    #svg-arrows {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      overflow: visible;
+      pointer-events: none;
+    }
+
+    /* ── Node grid: 4 cols × 3 rows ── */
+    #node-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-template-rows: auto 76px auto;
+      column-gap: 10px;
+      position: relative;
+      z-index: 2;
+    }
+
+    /* ── Node ── */
+    .node {
+      border: 1.5px solid #111111;
+      padding: 0.65rem 0.85rem;
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s;
+      user-select: none;
+      background: #ffffff;
+    }
+    .node:hover,
+    .node.active {
+      background: #111111;
+      color: #ffffff;
+    }
+    .node-layer {
+      font-size: 8px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #aaaaaa;
+      margin-bottom: 0.2rem;
+      transition: color 0.2s;
+    }
+    .node:hover .node-layer,
+    .node.active .node-layer { color: #888888; }
+    .node-title {
+      font-size: 11.5px;
+      font-weight: 500;
+      line-height: 1.3;
+    }
+
+    /* Grid cell placement */
+    [data-id="ceramic"]    { grid-column: 1; grid-row: 1; }
+    [data-id="sensors"]    { grid-column: 2; grid-row: 1; }
+    [data-id="gateway"]    { grid-column: 3; grid-row: 1; }
+    [data-id="twin"]       { grid-column: 4; grid-row: 1; }
+    [data-id="hvac"]       { grid-column: 1; grid-row: 3; }
+    /* col 2 row 3 intentionally empty */
+    [data-id="ml"]         { grid-column: 3; grid-row: 3; }
+    [data-id="irrigation"] { grid-column: 4; grid-row: 3; }
+
+    /* ── Detail panel ── */
+    #detail {
+      margin-top: 1rem;
+      border: 1.5px solid #111111;
+      padding: 0.85rem 1rem;
+      position: relative;
+    }
+
+    #detail-close {
+      position: absolute;
+      top: 0.6rem;
+      right: 0.9rem;
+      font-size: 13px;
+      cursor: pointer;
+      color: #aaaaaa;
+      line-height: 1;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.15s, color 0.15s;
+    }
+    #detail-close.visible { opacity: 1; pointer-events: auto; }
+    #detail-close:hover { color: #111111; }
+
+    #detail-layer {
+      font-size: 8px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #aaaaaa;
+      margin-bottom: 0.2rem;
+    }
+    #detail-title {
+      font-size: 12px;
+      font-weight: 600;
+      padding-bottom: 0.5rem;
+      margin-bottom: 0.5rem;
+      border-bottom: 1px solid #e0dedd;
+    }
+    #detail-points {
+      list-style: none;
+      font-size: 11px;
+      line-height: 1.7;
+      color: #444444;
+      columns: 2;
+      column-gap: 1.5rem;
+    }
+    #detail-points li {
+      padding-left: 1rem;
+      position: relative;
+      break-inside: avoid;
+    }
+    #detail-points li::before {
+      content: '→';
+      position: absolute;
+      left: 0;
+      color: #bbbbbb;
+      font-size: 9px;
+      top: 0.18em;
+    }
+
+    /* ── Arrow styles ── */
+    .a-line {
+      stroke: #111111;
+      stroke-width: 1.5;
+      fill: none;
+    }
+    .a-feedback {
+      stroke: #bbbbbb;
+      stroke-width: 1.5;
+      fill: none;
+      stroke-dasharray: 4,3;
+    }
+
+    /* ── Legend ── */
+    #legend {
+      display: flex;
+      gap: 1.5rem;
+      margin-top: 0.75rem;
+      align-items: center;
+    }
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 9px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: #bbbbbb;
+    }
+    .legend-line {
+      width: 24px;
+      height: 1.5px;
+      background: #111111;
+    }
+    .legend-dash {
+      width: 24px;
+      height: 0;
+      border-top: 1.5px dashed #bbbbbb;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="diagram-header">
+    <span id="diagram-label">Digital Twin Architecture</span>
+    <span id="diagram-hint">Click any node to explore</span>
+  </div>
+
+  <div id="graph">
+    <svg id="svg-arrows" aria-hidden="true">
+      <defs>
+        <!-- Normal arrowhead -->
+        <marker id="ah" markerWidth="8" markerHeight="8"
+                refX="7" refY="4" orient="auto" markerUnits="strokeWidth">
+          <path d="M0,0 L8,4 L0,8 L2,4 Z" fill="#111111"/>
+        </marker>
+        <!-- Feedback arrowhead -->
+        <marker id="ah-fb" markerWidth="8" markerHeight="8"
+                refX="7" refY="4" orient="auto" markerUnits="strokeWidth">
+          <path d="M0,0 L8,4 L0,8 L2,4 Z" fill="#bbbbbb"/>
+        </marker>
+      </defs>
+    </svg>
+
+    <div id="node-grid">
+      <!-- Row 1 -->
+      <div class="node" data-id="ceramic">
+        <div class="node-layer">Physical</div>
+        <div class="node-title">Ceramic Module</div>
+      </div>
+      <div class="node" data-id="sensors">
+        <div class="node-layer">Physical</div>
+        <div class="node-title">Sensor Array</div>
+      </div>
+      <div class="node" data-id="gateway">
+        <div class="node-layer">Data</div>
+        <div class="node-title">Edge Gateway</div>
+      </div>
+      <div class="node" data-id="twin">
+        <div class="node-layer">Data</div>
+        <div class="node-title">Digital Twin</div>
+      </div>
+      <!-- Row 2: empty spacer (76px) — used for arrows -->
+      <!-- Row 3 -->
+      <div class="node" data-id="hvac">
+        <div class="node-layer">Output</div>
+        <div class="node-title">HVAC Control</div>
+      </div>
+      <!-- col 2, row 3: intentionally empty -->
+      <div class="node" data-id="ml">
+        <div class="node-layer">Intelligence</div>
+        <div class="node-title">ML Pipeline</div>
+      </div>
+      <div class="node" data-id="irrigation">
+        <div class="node-layer">Output</div>
+        <div class="node-title">Irrigation</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Always-visible detail panel -->
+  <div id="detail">
+    <span id="detail-close">✕</span>
+    <p id="detail-layer"></p>
+    <p id="detail-title"></p>
+    <ul id="detail-points"></ul>
+  </div>
+
+  <!-- Legend -->
+  <div id="legend">
+    <div class="legend-item">
+      <div class="legend-line"></div>
+      <span>Data flow</span>
+    </div>
+    <div class="legend-item">
+      <div class="legend-dash"></div>
+      <span>Feedback loop</span>
+    </div>
+  </div>
+
+  <script>
+    /* ── Node data ── */
+    const NODE_DATA = {
+      _overview: {
+        layer: 'System Overview',
+        title: 'AerroTerra — Digital Twin',
+        points: [
+          'Ceramic façade module hosts aeroponic roots, sensors, and mist delivery',
+          'Edge gateway aggregates sensor data via façade-wide WiFi mesh',
+          'Digital twin maintains a live 3D model synced with real sensor state',
+          'ML pipeline drives adaptive HVAC setpoints and irrigation schedules',
+        ]
+      },
+      ceramic: {
+        layer: 'Physical Layer',
+        title: 'Ceramic Module',
+        points: [
+          'TPMS geometry — maximises surface area, minimises material mass',
+          'Integrated planting cavities for aeroponic root systems',
+          'Sensor housing channels embedded during slip casting',
+          'Micro-mist water delivery channel — in development',
+        ]
+      },
+      sensors: {
+        layer: 'Physical Layer',
+        title: 'Sensor Array',
+        points: [
+          'Soil moisture — capacitive probe per module zone',
+          'PM 2.5 particulate matter — optical particle counter',
+          'Microclimate temperature — thermistor array',
+          'Relative humidity — capacitive sensor',
+        ]
+      },
+      gateway: {
+        layer: 'Data Layer',
+        title: 'Edge Gateway',
+        points: [
+          'MQTT over WiFi mesh — façade-spanning sensor network',
+          'Local time-series buffering and lossless compression',
+          'On-edge anomaly flagging before cloud transmission',
+          'OTA firmware update support for remote management',
+        ]
+      },
+      twin: {
+        layer: 'Data Layer',
+        title: 'Digital Twin',
+        points: [
+          'Live 3D façade model synced with real-time sensor state',
+          'Spatial anomaly mapping across module grid',
+          'Historical playback for performance audit and calibration',
+          'Grasshopper parametric model as geometric backbone',
+        ]
+      },
+      ml: {
+        layer: 'Intelligence Layer',
+        title: 'ML Pipeline',
+        points: [
+          'Microclimate prediction — temperature and humidity forecast',
+          'HVAC energy demand forecasting — load curve modelling',
+          'Irrigation need detection via soil moisture + evapotranspiration',
+          'Continuous retraining on live façade sensor feed',
+        ]
+      },
+      hvac: {
+        layer: 'Output Layer',
+        title: 'HVAC Control',
+        points: [
+          'Adaptive setpoint control driven by façade microclimate data',
+          'Pre-cooling before peak-load hours — demand response',
+          'Estimated 15–30% reduction in cooling energy demand',
+          'BMS integration via BACnet / Modbus protocol',
+        ]
+      },
+      irrigation: {
+        layer: 'Output Layer',
+        title: 'Irrigation Scheduling',
+        points: [
+          'Adaptive watering schedule per module zone',
+          'Drought stress prediction from soil moisture + temperature',
+          'Fertigation integration for aeroponic nutrient delivery',
+          'Target: 80% water saving vs. conventional in-ground planting',
+        ]
+      },
+    };
+
+    /* ── Edge definitions ── */
+    const EDGES = [
+      { from: 'ceramic',    to: 'sensors',    fSide: 'right',  tSide: 'left',  type: 'normal'   },
+      { from: 'sensors',    to: 'gateway',    fSide: 'right',  tSide: 'left',  type: 'normal'   },
+      { from: 'gateway',    to: 'twin',       fSide: 'right',  tSide: 'left',  type: 'normal'   },
+      { from: 'twin',       to: 'ml',         fSide: 'bottom', tSide: 'top',   type: 'normal'   },
+      { from: 'ml',         to: 'irrigation', fSide: 'right',  tSide: 'left',  type: 'normal'   },
+      { from: 'ml',         to: 'hvac',       fSide: 'left',   tSide: 'right', type: 'normal'   },
+      { from: 'hvac',       to: 'ceramic',    fSide: 'left',   tSide: 'left',  type: 'feedback' },
+    ];
+
+    /* ── Get connection anchor point of a node ── */
+    function getPoint(el, side) {
+      const r = el.getBoundingClientRect();
+      const g = document.getElementById('graph').getBoundingClientRect();
+      const x = r.left - g.left;
+      const y = r.top  - g.top;
+      switch (side) {
+        case 'right':  return [x + r.width,        y + r.height / 2];
+        case 'left':   return [x,                   y + r.height / 2];
+        case 'top':    return [x + r.width / 2,     y              ];
+        case 'bottom': return [x + r.width / 2,     y + r.height   ];
+      }
+    }
+
+    /* ── Build SVG path d-string for an edge ── */
+    function buildPath(edge, fEl, tEl) {
+      const [fx, fy] = getPoint(fEl, edge.fSide);
+      const [tx, ty] = getPoint(tEl, edge.tSide);
+
+      if (edge.type === 'feedback') {
+        // U-shape going left of the grid: hvac.left → left margin → up → ceramic.left
+        const m = 16; // px left of the left-most node
+        return `M ${fx},${fy} L ${fx - m},${fy} L ${tx - m},${ty} L ${tx},${ty}`;
+      }
+      if (edge.fSide === 'bottom' && edge.tSide === 'top') {
+        // Right-angle elbow: down → cross column → down
+        const midY = (fy + ty) / 2;
+        return `M ${fx},${fy} L ${fx},${midY} L ${tx},${midY} L ${tx},${ty}`;
+      }
+      // Default: straight horizontal or vertical line
+      return `M ${fx},${fy} L ${tx},${ty}`;
+    }
+
+    /* ── Draw / redraw all arrows ── */
+    function drawArrows() {
+      const svg = document.getElementById('svg-arrows');
+      svg.querySelectorAll('[data-edge]').forEach(el => el.remove());
+
+      EDGES.forEach(edge => {
+        const fEl = document.querySelector(`.node[data-id="${edge.from}"]`);
+        const tEl = document.querySelector(`.node[data-id="${edge.to}"]`);
+        if (!fEl || !tEl) return;
+
+        const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+        path.setAttribute('d', buildPath(edge, fEl, tEl));
+        path.setAttribute('data-edge', `${edge.from}-${edge.to}`);
+        path.setAttribute('class',  edge.type === 'feedback' ? 'a-feedback' : 'a-line');
+        path.setAttribute('marker-end', edge.type === 'feedback' ? 'url(#ah-fb)' : 'url(#ah)');
+        svg.appendChild(path);
+      });
+    }
+
+    /* ── Show detail panel ── */
+    function showDetail(id) {
+      const data = NODE_DATA[id] || NODE_DATA['_overview'];
+      document.getElementById('detail-layer').textContent = data.layer;
+      document.getElementById('detail-title').textContent = data.title;
+      document.getElementById('detail-points').innerHTML =
+        data.points.map(p => `<li>${p}</li>`).join('');
+
+      const closeBtn = document.getElementById('detail-close');
+      if (id === '_overview') {
+        closeBtn.classList.remove('visible');
+      } else {
+        closeBtn.classList.add('visible');
+      }
+    }
+
+    /* ── Click handling ── */
+    let activeId = null;
+
+    document.querySelectorAll('.node').forEach(node => {
+      node.addEventListener('click', () => {
+        const id = node.dataset.id;
+
+        if (activeId === id) {
+          // Deactivate → back to overview
+          node.classList.remove('active');
+          activeId = null;
+          showDetail('_overview');
+          return;
+        }
+
+        // Deactivate previous
+        if (activeId) {
+          document.querySelector(`.node[data-id="${activeId}"]`)?.classList.remove('active');
+        }
+
+        node.classList.add('active');
+        activeId = id;
+        showDetail(id);
+      });
+    });
+
+    document.getElementById('detail-close').addEventListener('click', () => {
+      if (activeId) {
+        document.querySelector(`.node[data-id="${activeId}"]`)?.classList.remove('active');
+        activeId = null;
+      }
+      showDetail('_overview');
+    });
+
+    /* ── Responsive: redraw arrows on resize ── */
+    const ro = new ResizeObserver(() => requestAnimationFrame(drawArrows));
+    ro.observe(document.getElementById('graph'));
+
+    /* ── Init ── */
+    showDetail('_overview');
+    requestAnimationFrame(drawArrows);
+  </script>
+
+</body>
+</html>
