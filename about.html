@@ -205,6 +205,58 @@
     }
     .cta-link:hover { color: var(--text); border-color: var(--text); }
 
+    /* ── Education ── */
+    .about-edu {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: clamp(2.5rem, 4vw, 4rem) var(--pad);
+      border-bottom: 1px solid var(--border);
+    }
+    .edu-label {
+      font-size: 10px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 2rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .edu-entries {
+      display: flex;
+      flex-direction: column;
+      gap: 1.75rem;
+    }
+    .edu-entry {
+      display: grid;
+      grid-template-columns: 120px 1fr;
+      gap: 2rem;
+      align-items: start;
+    }
+    .edu-years {
+      font-size: 11px;
+      letter-spacing: 0.06em;
+      color: var(--muted);
+      padding-top: 0.1rem;
+      white-space: nowrap;
+    }
+    .edu-body {}
+    .edu-degree {
+      font-family: var(--font-serif);
+      font-size: 15px;
+      color: var(--text);
+      margin-bottom: 0.2rem;
+    }
+    .edu-school {
+      font-size: 13px;
+      color: var(--text);
+      margin-bottom: 0.2rem;
+    }
+    .edu-note {
+      font-size: 12px;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
     /* ── Responsive ── */
     @media (max-width: 860px) {
       .about-wrap { grid-template-columns: 1fr; gap: 2.5rem; }
@@ -251,6 +303,40 @@
         </div>
       </div>
     </div>
+
+    <!-- ── Education ── -->
+    <section class="about-edu">
+      <p class="edu-label">Education</p>
+      <div class="edu-entries">
+
+        <div class="edu-entry">
+          <span class="edu-years">2025 — 2028</span>
+          <div class="edu-body">
+            <p class="edu-degree">Master of Design (MDes)</p>
+            <p class="edu-school">Harvard University, Graduate School of Design — Cambridge, MA</p>
+            <p class="edu-note">Ecologies + Real Estate &amp; Sustainability &nbsp;·&nbsp; Gap year UAE 2026–2027</p>
+          </div>
+        </div>
+
+        <div class="edu-entry">
+          <span class="edu-years">2020 — 2025</span>
+          <div class="edu-body">
+            <p class="edu-degree">Bachelor of Architecture (B.Arch), 5-year</p>
+            <p class="edu-school">Syracuse University, School of Architecture — Syracuse, NY</p>
+            <p class="edu-note">GPA 3.669 / 4.0 &nbsp;·&nbsp; Dean's List &nbsp;·&nbsp; Study Abroad: Florence &amp; London, 2024</p>
+          </div>
+        </div>
+
+        <div class="edu-entry">
+          <span class="edu-years">2024 — Now</span>
+          <div class="edu-body">
+            <p class="edu-degree">LEED Green Associate</p>
+            <p class="edu-school">U.S. Green Building Council</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
 
     <!-- ── Vision Diagram ── -->
     <section class="vision-section">
