@@ -257,6 +257,63 @@
       line-height: 1.6;
     }
 
+    /* ── Research ── */
+    .about-research {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: clamp(2rem, 3.5vw, 3rem) var(--pad);
+      border-bottom: 1px solid var(--border);
+    }
+    .research-label {
+      font-size: 10px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      flex-shrink: 0;
+    }
+    .research-entries {
+      margin-top: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+    .research-entry {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 1rem 2rem;
+      align-items: baseline;
+      padding-bottom: 1.25rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .research-entry:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+    .research-title {
+      font-family: var(--font-serif);
+      font-size: 1rem;
+      color: var(--text);
+      text-decoration: none;
+      border-bottom: 1px solid var(--text);
+      padding-bottom: 1px;
+      transition: opacity 0.2s;
+      display: inline;
+    }
+    .research-title:hover { opacity: 0.5; }
+    .research-sub {
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 0.3rem;
+      line-height: 1.6;
+    }
+    .research-tag {
+      font-size: 10px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+      white-space: nowrap;
+    }
+
     /* ── Responsive ── */
     @media (max-width: 860px) {
       .about-wrap { grid-template-columns: 1fr; gap: 2.5rem; }
@@ -576,6 +633,34 @@
           <a href="mailto:zhaoyi_wang@gsd.harvard.edu" class="contact-value">zhaoyi_wang@gsd.harvard.edu</a>
           <a href="mailto:zhaoyiwang6@outlook.com" class="contact-value">zhaoyiwang6@outlook.com</a>
         </div>
+      </div>
+    </div>
+
+    <!-- ── Research & Analysis ── -->
+    <div class="about-research">
+      <span class="research-label">Research &amp; Analysis</span>
+      <div class="research-entries">
+
+        <div class="research-entry">
+          <div>
+            <a href="about/NNN-REIT-Sustainability-Assessment.pdf" target="_blank" rel="noopener" class="research-title">
+              Sustainability Performance Assessment — NNN REIT, Inc. ↗
+            </a>
+            <p class="research-sub">ESG materiality analysis of a US net-lease REIT · Evaluates decarbonization exposure, physical climate risk, and governance gaps within a triple-net lease structure · Solo</p>
+          </div>
+          <span class="research-tag">Harvard GSD · 2025</span>
+        </div>
+
+        <div class="research-entry">
+          <div>
+            <a href="about/Kilroy-Realty-ESG-Strategy.pdf" target="_blank" rel="noopener" class="research-title">
+              Strategic ESG Transformation — Kilroy Realty Corporation ↗
+            </a>
+            <p class="research-sub">Proposes a three-pillar transformational strategy for a $9.5B REIT — reframing ESG from compliance to value creation through "climate district" frameworks · Team: Max Wang, Tejas Athni, Xavaar Quaranto</p>
+          </div>
+          <span class="research-tag">Harvard SES 5526 · 2025</span>
+        </div>
+
       </div>
     </div>
 
