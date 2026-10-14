@@ -61,6 +61,19 @@ nav {
   transition: color 0.2s;
 }
 .nav-links a:hover { color: var(--text); }
+.nav-portfolio-btn {
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  border: 1px solid var(--text);
+  padding: 0.38rem 0.9rem;
+  text-decoration: none;
+  color: var(--text);
+  transition: background 0.2s, color 0.2s;
+  white-space: nowrap;
+  margin-left: 1rem;
+}
+.nav-portfolio-btn:hover { background: var(--text); color: var(--bg); }
 
 /* ── Hero ── */
 .hero {
