@@ -314,6 +314,101 @@
       white-space: nowrap;
     }
 
+    /* ── Work Experience ── */
+    .about-work {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: clamp(2.5rem, 4vw, 4rem) var(--pad);
+      border-bottom: 1px solid var(--border);
+    }
+    .work-label {
+      font-size: 10px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 2rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .work-entries { display: flex; flex-direction: column; }
+    .work-entry {
+      display: grid;
+      grid-template-columns: 120px 1fr;
+      gap: 2rem;
+      align-items: start;
+      padding: 2rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .work-entry:last-child { border-bottom: none; }
+    .work-years {
+      font-size: 11px;
+      letter-spacing: 0.06em;
+      color: var(--muted);
+      padding-top: 0.1rem;
+      white-space: nowrap;
+    }
+    .work-role {
+      font-family: var(--font-serif);
+      font-size: 15px;
+      color: var(--text);
+      margin-bottom: 0.15rem;
+    }
+    .work-company {
+      font-size: 12px;
+      letter-spacing: 0.03em;
+      color: var(--muted);
+      margin-bottom: 0.65rem;
+    }
+    .work-note {
+      font-size: 13px;
+      color: var(--text);
+      line-height: 1.75;
+      max-width: 560px;
+    }
+    .work-deliverables {
+      margin-top: 1.25rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+    .work-item {
+      padding: 0.8rem 1rem;
+      border-left: 2px solid var(--border);
+      background: var(--hover-bg);
+    }
+    .work-item-tag {
+      font-size: 10px;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 0.25rem;
+    }
+    .work-item-desc {
+      font-size: 13px;
+      color: var(--text);
+      line-height: 1.65;
+    }
+    .work-item img {
+      margin-top: 0.85rem;
+      width: 100%;
+      max-width: 520px;
+      border: 1px solid var(--border);
+      display: block;
+    }
+    .work-project-link {
+      display: inline-block;
+      margin-top: 1rem;
+      font-size: 10px;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+      color: var(--muted);
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 2px;
+      text-decoration: none;
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .work-project-link:hover { color: var(--text); border-color: var(--text); }
+
     /* ── Responsive ── */
     @media (max-width: 860px) {
       .about-wrap { grid-template-columns: 1fr; gap: 2.5rem; }
@@ -324,6 +419,8 @@
       .edu-entry { grid-template-columns: 90px 1fr; gap: 1.25rem; }
       .research-entry { grid-template-columns: 1fr; gap: 0.4rem; }
       .research-tag { text-align: left; }
+      .work-entry { grid-template-columns: 1fr; gap: 0.4rem; }
+      .work-years { padding-top: 0; }
     }
     @media (max-width: 560px) {
       .about-skills { grid-template-columns: 1fr; }
@@ -607,6 +704,62 @@
           Asian Design Award — Gold<br>
           LEED Green Associate
         </div>
+      </div>
+    </section>
+
+    <!-- ── Work Experience ── -->
+    <section class="about-work">
+      <p class="work-label">Work Experience</p>
+      <div class="work-entries">
+
+        <!-- Built Environment Plus -->
+        <div class="work-entry">
+          <span class="work-years">2026 — Now</span>
+          <div class="work-body">
+            <p class="work-role">Researcher</p>
+            <p class="work-company">Built Environment Plus · City of Salem, MA</p>
+            <p class="work-note">Research and publish industry–academia connections on the connects.build platform, matching built environment firms to student design studios across Greater Boston. Compile spotlights, newsletters, and project profiles bridging practice and education.</p>
+            <div class="work-deliverables">
+              <div class="work-item">
+                <p class="work-item-tag">Company Connections Published</p>
+                <p class="work-item-desc">Connected NBBJ, SGH, Bond Brothers, and Nitsch Engineering to the BHCC Student Success Center studio; Somerset Development and Eric Colbert &amp; Associates to the Faircliff project — creating a searchable archive of firm expertise for student teams.</p>
+                <img src="about/be-plus-cms.webp" alt="Built Environment Plus content management — published company connections">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- City of Salem -->
+        <div class="work-entry">
+          <span class="work-years">2026</span>
+          <div class="work-body">
+            <p class="work-role">Policy Intern</p>
+            <p class="work-company">City of Salem Mayor's Office · Salem, MA</p>
+            <p class="work-note">Drafted the City's first Battery Energy Storage System (BESS) zoning ordinance under 225 CMR 29, and built an Excel-based early-warning displacement risk monitoring tool for affordable housing policy.</p>
+            <div class="work-deliverables">
+              <div class="work-item">
+                <p class="work-item-tag">BESS Zoning Ordinance — Draft</p>
+                <p class="work-item-desc">Benchmarked 6 peer municipalities, synthesised the DOER model bylaw and 225 CMR 29 baseline standards, and drafted siting, setback, and fire-safety provisions for Salem's first clean energy storage ordinance. Deadline: October 2026.</p>
+              </div>
+              <div class="work-item">
+                <p class="work-item-tag">Displacement Risk Monitoring Tool</p>
+                <p class="work-item-desc">Excel-based early-warning system scoring ~10 Salem census tracts across 3 displacement-risk domains (housing cost pressure, demographic change, proximity to investment). Presented at mid-cycle Mayor's policy review.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- RoboticPlus.AI -->
+        <div class="work-entry">
+          <span class="work-years">2024</span>
+          <div class="work-body">
+            <p class="work-role">Design Researcher</p>
+            <p class="work-company">RoboticPlus.AI · Shanghai</p>
+            <p class="work-note">Parametric design and robotic fabrication of the "Lotus" kinetic architecture installation — translating algorithmic surface geometry into a physical kinetic structure using Grasshopper-to-KUKA toolpath pipelines.</p>
+            <a href="projects/lotus-roboticplus.html" class="work-project-link">View project ↗</a>
+          </div>
+        </div>
+
       </div>
     </section>
 
