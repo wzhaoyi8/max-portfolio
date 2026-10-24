@@ -240,14 +240,20 @@ footer a:hover { color: var(--text); }
 
 /* ── Responsive ── */
 @media (max-width: 768px) {
-  .projects {
-    grid-template-columns: 1fr;
-    padding: 0;
-    border: none;
-    gap: 0;
-    background: none;
-  }
+  /* Nav */
+  .nav-portfolio-btn { display: none; }
+  .nav-name { font-size: 12px; white-space: nowrap; }
+  .nav-links { gap: 1rem; flex-shrink: 0; }
+  .nav-links a { font-size: 11px; }
+
+  /* Projects */
+  .projects { grid-template-columns: 1fr; padding: 0; border: none; gap: 0; background: none; }
   .project-card { border-bottom: 1px solid var(--border); }
+  .project-info { padding-left: var(--pad); padding-right: var(--pad); }
+
+  /* Hero */
   .hero-meta { flex-direction: column; gap: 0.5rem; }
+
+  /* Footer */
   footer { flex-direction: column; gap: 0.5rem; text-align: center; }
 }
