@@ -743,7 +743,161 @@
               </div>
               <div class="work-item">
                 <p class="work-item-tag">Displacement Risk Monitoring Tool</p>
-                <p class="work-item-desc">Excel-based early-warning system scoring ~10 Salem census tracts across 3 displacement-risk domains (housing cost pressure, demographic change, proximity to investment). Presented at mid-cycle Mayor's policy review.</p>
+                <p class="work-item-desc">Excel workbook scoring 9 Salem census tracts (44,795 residents) across 17 indicators in 3 domains. Min-max rescaled, weighted, colour-flagged HIGH / WATCH / STABLE. Presented at mid-cycle Mayor's policy review. The Point scored highest by 21 points.</p>
+                <div class="work-dms-diagram" style="margin-top:1.25rem;overflow-x:auto;-webkit-overflow-scrolling:touch;">
+<svg viewBox="0 0 760 465" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:760px;display:block;font-family:-apple-system,BlinkMacSystemFont,'Helvetica Neue',sans-serif;">
+
+  <!-- ── SYSTEM LABEL ── -->
+  <text x="380" y="13" text-anchor="middle" font-size="7" letter-spacing="0.13em" fill="#aaaaaa">SALEM DISPLACEMENT MONITORING SYSTEM  ·  9 TRACTS  ·  44,795 RESIDENTS  ·  AUGUST 2026</text>
+
+  <!-- ── DATA SOURCES: 8 pills ── -->
+  <!-- pill width 84, gap 6, start x=15 -->
+  <rect x="15"  y="20" width="84" height="17" rx="2" fill="none" stroke="#e0dedd" stroke-width="0.8"/><text x="57"  y="31.5" text-anchor="middle" font-size="6.5" letter-spacing="0.05em" fill="#888">Census ACS</text>
+  <rect x="105" y="20" width="84" height="17" rx="2" fill="none" stroke="#e0dedd" stroke-width="0.8"/><text x="147" y="31.5" text-anchor="middle" font-size="6.5" letter-spacing="0.05em" fill="#888">HUD Housing</text>
+  <rect x="195" y="20" width="84" height="17" rx="2" fill="none" stroke="#e0dedd" stroke-width="0.8"/><text x="237" y="31.5" text-anchor="middle" font-size="6.5" letter-spacing="0.05em" fill="#888">HUD CHAS</text>
+  <rect x="285" y="20" width="88" height="17" rx="2" fill="none" stroke="#e0dedd" stroke-width="0.8"/><text x="329" y="31.5" text-anchor="middle" font-size="6.5" letter-spacing="0.05em" fill="#888">HUD/USPS Vacancy</text>
+  <rect x="379" y="20" width="80" height="17" rx="2" fill="none" stroke="#e0dedd" stroke-width="0.8"/><text x="419" y="31.5" text-anchor="middle" font-size="6.5" letter-spacing="0.05em" fill="#888">City Permits</text>
+  <rect x="465" y="20" width="84" height="17" rx="2" fill="none" stroke="#e0dedd" stroke-width="0.8"/><text x="507" y="31.5" text-anchor="middle" font-size="6.5" letter-spacing="0.05em" fill="#888">City Assessor</text>
+  <rect x="555" y="20" width="80" height="17" rx="2" fill="none" stroke="#e0dedd" stroke-width="0.8"/><text x="595" y="31.5" text-anchor="middle" font-size="6.5" letter-spacing="0.05em" fill="#888">STR Registry</text>
+  <rect x="641" y="20" width="104" height="17" rx="2" fill="none" stroke="#e0dedd" stroke-width="0.8"/><text x="693" y="31.5" text-anchor="middle" font-size="6.5" letter-spacing="0.05em" fill="#888">Rental Registry</text>
+
+  <!-- ── CONNECTORS: sources → horizontal bar → 3 verticals to domains ── -->
+  <!-- All sources drop to y=46, merge into horizontal bar, then 3 lines go to domain tops -->
+  <line x1="57"  y1="37" x2="57"  y2="46" stroke="#e0dedd" stroke-width="0.6"/>
+  <line x1="147" y1="37" x2="147" y2="46" stroke="#e0dedd" stroke-width="0.6"/>
+  <line x1="237" y1="37" x2="237" y2="46" stroke="#e0dedd" stroke-width="0.6"/>
+  <line x1="329" y1="37" x2="329" y2="46" stroke="#e0dedd" stroke-width="0.6"/>
+  <line x1="419" y1="37" x2="419" y2="46" stroke="#e0dedd" stroke-width="0.6"/>
+  <line x1="507" y1="37" x2="507" y2="46" stroke="#e0dedd" stroke-width="0.6"/>
+  <line x1="595" y1="37" x2="595" y2="46" stroke="#e0dedd" stroke-width="0.6"/>
+  <line x1="693" y1="37" x2="693" y2="46" stroke="#e0dedd" stroke-width="0.6"/>
+  <line x1="15"  y1="46" x2="745" y2="46" stroke="#e0dedd" stroke-width="0.6"/>
+  <!-- Three verticals to domain boxes (tops at y=58) -->
+  <line x1="129" y1="46" x2="129" y2="58" stroke="#c4a882" stroke-width="0.9"/>
+  <line x1="371" y1="46" x2="371" y2="58" stroke="#9cbec6" stroke-width="0.9"/>
+  <line x1="622" y1="46" x2="622" y2="58" stroke="#a0b890" stroke-width="0.9"/>
+
+  <!-- ══════════════════════════════════════════ -->
+  <!-- DOMAIN BOX 1: VULNERABILITY (x=15, w=228) -->
+  <!-- ══════════════════════════════════════════ -->
+  <rect x="15" y="58" width="228" height="198" rx="2" fill="none" stroke="#c4a882" stroke-width="1"/>
+  <rect x="15" y="58" width="228" height="25" rx="2" fill="#f9f3ec" stroke="none"/>
+  <rect x="15" y="74" width="228" height="9"  fill="#f9f3ec" stroke="none"/>
+  <text x="27"  y="73" font-size="7.5" letter-spacing="0.09em" fill="#b08060">VULNERABILITY</text>
+  <text x="233" y="73" text-anchor="end" font-size="9" letter-spacing="0.04em" fill="#b08060" font-weight="500">× 0.4</text>
+  <!-- 8 measures -->
+  <text x="27" y=" 99" font-size="7.5" fill="#666">Renter share</text>
+  <text x="27" y="115" font-size="7.5" fill="#666">Cost burden</text>
+  <text x="27" y="131" font-size="7.5" fill="#666">People of colour share</text>
+  <text x="27" y="147" font-size="7.5" fill="#666">Senior renter share</text>
+  <text x="27" y="163" font-size="7.5" fill="#666">Long-tenure renters</text>
+  <text x="27" y="179" font-size="7.5" fill="#666">Overcrowding</text>
+  <text x="27" y="195" font-size="7.5" fill="#666">Low-income assisted HH</text>
+  <text x="27" y="211" font-size="7.5" fill="#666">Severely burdened renters</text>
+  <text x="129" y="246" text-anchor="middle" font-size="7" letter-spacing="0.09em" fill="#c4a882">8 MEASURES</text>
+
+  <!-- ══════════════════════════════════════════ -->
+  <!-- DOMAIN BOX 2: MARKET PRESSURE (x=257, w=228) -->
+  <!-- ══════════════════════════════════════════ -->
+  <rect x="257" y="58" width="228" height="198" rx="2" fill="none" stroke="#9cbec6" stroke-width="1"/>
+  <rect x="257" y="58" width="228" height="25" rx="2" fill="#e8f2f4" stroke="none"/>
+  <rect x="257" y="74" width="228" height="9"  fill="#e8f2f4" stroke="none"/>
+  <text x="269" y="73" font-size="7.5" letter-spacing="0.09em" fill="#6898a0">MARKET PRESSURE</text>
+  <text x="475" y="73" text-anchor="end" font-size="9" letter-spacing="0.04em" fill="#6898a0" font-weight="500">× 0.4</text>
+  <!-- 6 measures -->
+  <text x="269" y=" 99" font-size="7.5" fill="#666">Home value vs assessed value</text>
+  <text x="269" y="115" font-size="7.5" fill="#666">Building permit activity</text>
+  <text x="269" y="131" font-size="7.5" fill="#666">Short-term rental growth</text>
+  <text x="269" y="147" font-size="7.5" fill="#666">Registered rent levels</text>
+  <text x="269" y="163" font-size="7.5" fill="#666">Sale price / assessed ratio</text>
+  <text x="269" y="179" font-size="7.5" fill="#666">Parcel ownership turnover</text>
+  <text x="371" y="246" text-anchor="middle" font-size="7" letter-spacing="0.09em" fill="#9cbec6">6 MEASURES</text>
+
+  <!-- ══════════════════════════════════════════ -->
+  <!-- DOMAIN BOX 3: DIRECT SIGNALS (x=499, w=246) -->
+  <!-- ══════════════════════════════════════════ -->
+  <rect x="499" y="58" width="246" height="198" rx="2" fill="none" stroke="#a0b890" stroke-width="1"/>
+  <rect x="499" y="58" width="246" height="25" rx="2" fill="#eaf2e4" stroke="none"/>
+  <rect x="499" y="74" width="246" height="9"  fill="#eaf2e4" stroke="none"/>
+  <text x="511" y="73" font-size="7.5" letter-spacing="0.09em" fill="#6a8a60">DIRECT SIGNALS</text>
+  <text x="735" y="73" text-anchor="end" font-size="9" letter-spacing="0.04em" fill="#6a8a60" font-weight="500">× 0.2</text>
+  <!-- 3 measures + note -->
+  <text x="511" y=" 99" font-size="7.5" fill="#666">Residential vacancy rate</text>
+  <text x="511" y="115" font-size="7.5" fill="#666">Household turnover</text>
+  <text x="511" y="131" font-size="7.5" fill="#666">Households behind on rent</text>
+  <text x="511" y="157" font-size="7"   fill="#aaa" font-style="italic">Fastest-moving signals —</text>
+  <text x="511" y="170" font-size="7"   fill="#aaa" font-style="italic">housing events before they</text>
+  <text x="511" y="183" font-size="7"   fill="#aaa" font-style="italic">become eviction filings.</text>
+  <text x="511" y="199" font-size="7"   fill="#aaa" font-style="italic">Quarterly HUD/USPS update.</text>
+  <text x="622" y="246" text-anchor="middle" font-size="7" letter-spacing="0.09em" fill="#a0b890">3 MEASURES</text>
+
+  <!-- ── CONNECTORS: domains → formula ── -->
+  <line x1="129" y1="256" x2="129" y2="268" stroke="#e0dedd" stroke-width="0.7"/>
+  <line x1="371" y1="256" x2="371" y2="268" stroke="#e0dedd" stroke-width="0.7"/>
+  <line x1="622" y1="256" x2="622" y2="268" stroke="#e0dedd" stroke-width="0.7"/>
+  <line x1="129" y1="268" x2="622" y2="268" stroke="#e0dedd" stroke-width="0.7"/>
+  <line x1="380" y1="268" x2="380" y2="277" stroke="#e0dedd" stroke-width="0.7"/>
+
+  <!-- ── FORMULA BAND ── -->
+  <rect x="60" y="277" width="640" height="46" rx="2" fill="#f7f6f3" stroke="#e0dedd" stroke-width="0.8"/>
+  <text x="380" y="294" text-anchor="middle" font-size="7" letter-spacing="0.1em" fill="#aaaaaa">MIN-MAX RESCALING  ·  17 SCORED MEASURES  ·  WEIGHTED SUM</text>
+  <text x="380" y="313" text-anchor="middle" font-size="8.5" fill="#444">Risk  =  0.4 × Vulnerability  +  0.4 × Market Pressure  +  0.2 × Direct Signals</text>
+
+  <!-- ── CONNECTOR: formula → tracts ── -->
+  <line x1="380" y1="323" x2="380" y2="338" stroke="#e0dedd" stroke-width="0.7"/>
+  <text x="380" y="350" text-anchor="middle" font-size="7" letter-spacing="0.13em" fill="#aaaaaa">RISK SCORE BY CENSUS TRACT</text>
+
+  <!-- ── OUTPUT: 9 CENSUS TRACTS ── -->
+  <!-- 9 boxes, each width=74, gap=7, start x=15 -->
+  <!-- THE POINT — HIGH -->
+  <rect x="15"  y="356" width="74" height="34" rx="2" fill="#fdf0f0" stroke="#d08080" stroke-width="1"/>
+  <text x="52"  y="369" text-anchor="middle" font-size="5.8" letter-spacing="0.07em" fill="#c07070">THE POINT</text>
+  <text x="52"  y="383" text-anchor="middle" font-size="7.5" letter-spacing="0.12em" fill="#c07070" font-weight="600">HIGH</text>
+
+  <!-- TRACT 204600 — WATCH -->
+  <rect x="96"  y="356" width="74" height="34" rx="2" fill="#fdf5e8" stroke="#c4a050" stroke-width="1"/>
+  <text x="133" y="369" text-anchor="middle" font-size="5.8" letter-spacing="0.07em" fill="#b09040">TRACT 204600</text>
+  <text x="133" y="383" text-anchor="middle" font-size="7.5" letter-spacing="0.12em" fill="#b09040" font-weight="600">WATCH</text>
+
+  <!-- 7 STABLE tracts -->
+  <rect x="177" y="356" width="74" height="34" rx="2" fill="#f2f7f0" stroke="#8caa7c" stroke-width="0.9"/>
+  <text x="214" y="376" text-anchor="middle" font-size="7.5" letter-spacing="0.12em" fill="#7a9a6a">STABLE</text>
+
+  <rect x="258" y="356" width="74" height="34" rx="2" fill="#f2f7f0" stroke="#8caa7c" stroke-width="0.9"/>
+  <text x="295" y="376" text-anchor="middle" font-size="7.5" letter-spacing="0.12em" fill="#7a9a6a">STABLE</text>
+
+  <rect x="339" y="356" width="74" height="34" rx="2" fill="#f2f7f0" stroke="#8caa7c" stroke-width="0.9"/>
+  <text x="376" y="376" text-anchor="middle" font-size="7.5" letter-spacing="0.12em" fill="#7a9a6a">STABLE</text>
+
+  <rect x="420" y="356" width="74" height="34" rx="2" fill="#f2f7f0" stroke="#8caa7c" stroke-width="0.9"/>
+  <text x="457" y="376" text-anchor="middle" font-size="7.5" letter-spacing="0.12em" fill="#7a9a6a">STABLE</text>
+
+  <rect x="501" y="356" width="74" height="34" rx="2" fill="#f2f7f0" stroke="#8caa7c" stroke-width="0.9"/>
+  <text x="538" y="376" text-anchor="middle" font-size="7.5" letter-spacing="0.12em" fill="#7a9a6a">STABLE</text>
+
+  <rect x="582" y="356" width="74" height="34" rx="2" fill="#f2f7f0" stroke="#8caa7c" stroke-width="0.9"/>
+  <text x="619" y="376" text-anchor="middle" font-size="7.5" letter-spacing="0.12em" fill="#7a9a6a">STABLE</text>
+
+  <rect x="663" y="356" width="82" height="34" rx="2" fill="#f2f7f0" stroke="#8caa7c" stroke-width="0.9"/>
+  <text x="704" y="376" text-anchor="middle" font-size="7.5" letter-spacing="0.12em" fill="#7a9a6a">STABLE</text>
+
+  <!-- ── TOOLS STRIP ── -->
+  <line x1="15" y1="403" x2="745" y2="403" stroke="#e0dedd" stroke-width="0.6"/>
+  <text x="15" y="417" font-size="7" letter-spacing="0.09em" fill="#bbbbbb">BUILT WITH</text>
+  <!-- tool tags -->
+  <rect x="83"  y="407" width="52"  height="16" rx="2" fill="none" stroke="#e0dedd" stroke-width="0.7"/><text x="109"  y="418" text-anchor="middle" font-size="6.5" fill="#888">Python</text>
+  <rect x="141" y="407" width="88"  height="16" rx="2" fill="none" stroke="#e0dedd" stroke-width="0.7"/><text x="185"  y="418" text-anchor="middle" font-size="6.5" fill="#888">Excel Workbook</text>
+  <rect x="235" y="407" width="80"  height="16" rx="2" fill="none" stroke="#e0dedd" stroke-width="0.7"/><text x="275"  y="418" text-anchor="middle" font-size="6.5" fill="#888">Census API</text>
+  <rect x="321" y="407" width="50"  height="16" rx="2" fill="none" stroke="#e0dedd" stroke-width="0.7"/><text x="346"  y="418" text-anchor="middle" font-size="6.5" fill="#888">Cloud</text>
+  <rect x="377" y="407" width="96"  height="16" rx="2" fill="none" stroke="#e0dedd" stroke-width="0.7"/><text x="425"  y="418" text-anchor="middle" font-size="6.5" fill="#888">Visual Studio Code</text>
+  <rect x="479" y="407" width="80"  height="16" rx="2" fill="none" stroke="#e0dedd" stroke-width="0.7"/><text x="519"  y="418" text-anchor="middle" font-size="6.5" fill="#888">ArcGIS / Maps</text>
+
+  <!-- Sub-note -->
+  <text x="380" y="448" text-anchor="middle" font-size="7" fill="#cccccc" font-style="italic">Thresholds adjustable in one sheet · designed to be re-run yearly · no formula editing required</text>
+  <text x="380" y="461" text-anchor="middle" font-size="7" fill="#cccccc" font-style="italic">Just City Mayoral Fellowship  ·  City of Salem  ·  Summer 2026</text>
+
+</svg>
+                </div>
               </div>
             </div>
           </div>
