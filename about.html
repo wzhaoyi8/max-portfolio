@@ -743,7 +743,7 @@
               </div>
               <div class="work-item">
                 <p class="work-item-tag">Displacement Risk Monitoring Tool</p>
-                <p class="work-item-desc">Excel workbook scoring 9 Salem census tracts (44,795 residents) across 17 indicators in 3 domains. Min-max rescaled, weighted, colour-flagged HIGH / WATCH / STABLE. Presented at mid-cycle Mayor's policy review. The Point scored highest by 21 points.</p>
+                <p class="work-item-desc">Excel workbook scoring 9 Salem census tracts (44,795 residents) across 17 indicators in 3 domains. Min-max rescaled, weighted, colour-flagged HIGH / WATCH / STABLE. Presented at mid-cycle Mayor's policy review. The Point scored 100 — 21 points above any other tract. When reviewed by City planning staff and community partners, the rankings matched lived experience: the highest-scoring tracts are Salem's most cost-burdened renter neighborhoods; the lowest-scoring waterfront tracts reflect higher-income owner-occupancy with lower displacement pressure. The model passed its real-world validation.</p>
                 <div class="work-dms-diagram" style="margin-top:1.25rem;overflow-x:auto;-webkit-overflow-scrolling:touch;">
 <svg viewBox="0 0 760 465" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:760px;display:block;font-family:-apple-system,BlinkMacSystemFont,'Helvetica Neue',sans-serif;">
 
@@ -847,39 +847,62 @@
   <line x1="380" y1="323" x2="380" y2="338" stroke="#e0dedd" stroke-width="0.7"/>
   <text x="380" y="350" text-anchor="middle" font-size="7" letter-spacing="0.13em" fill="#aaaaaa">RISK SCORE BY CENSUS TRACT</text>
 
-  <!-- ── OUTPUT: 9 CENSUS TRACTS ── -->
-  <!-- 9 boxes, each width=74, gap=7, start x=15 -->
-  <!-- THE POINT — HIGH -->
-  <rect x="15"  y="356" width="74" height="34" rx="2" fill="#fdf0f0" stroke="#d08080" stroke-width="1"/>
-  <text x="52"  y="369" text-anchor="middle" font-size="5.8" letter-spacing="0.07em" fill="#c07070">THE POINT</text>
-  <text x="52"  y="383" text-anchor="middle" font-size="7.5" letter-spacing="0.12em" fill="#c07070" font-weight="600">HIGH</text>
+  <!-- ── OUTPUT: 9 CENSUS TRACTS (actual Summer 2026 scores) ── -->
+  <!-- HIGH: 204300/100, 204600/50, 204701/47 | WATCH: 204702/43, 204400/42 | STABLE: 204200/46, 204101/32, 204102/31, 204500/29 -->
 
-  <!-- TRACT 204600 — WATCH -->
-  <rect x="96"  y="356" width="74" height="34" rx="2" fill="#fdf5e8" stroke="#c4a050" stroke-width="1"/>
-  <text x="133" y="369" text-anchor="middle" font-size="5.8" letter-spacing="0.07em" fill="#b09040">TRACT 204600</text>
-  <text x="133" y="383" text-anchor="middle" font-size="7.5" letter-spacing="0.12em" fill="#b09040" font-weight="600">WATCH</text>
+  <!-- 204300 — THE POINT — 100 — HIGH -->
+  <rect x="15"  y="356" width="74" height="40" rx="2" fill="#fdf0f0" stroke="#d08080" stroke-width="1"/>
+  <text x="52"  y="368" text-anchor="middle" font-size="5.5" letter-spacing="0.07em" fill="#c07070">THE POINT</text>
+  <text x="52"  y="380" text-anchor="middle" font-size="12" fill="#c07070" font-weight="700">100</text>
+  <text x="52"  y="392" text-anchor="middle" font-size="6" letter-spacing="0.1em" fill="#c07070">HIGH</text>
 
-  <!-- 7 STABLE tracts -->
-  <rect x="177" y="356" width="74" height="34" rx="2" fill="#f2f7f0" stroke="#8caa7c" stroke-width="0.9"/>
-  <text x="214" y="376" text-anchor="middle" font-size="7.5" letter-spacing="0.12em" fill="#7a9a6a">STABLE</text>
+  <!-- 204600 — 50 — HIGH -->
+  <rect x="96"  y="356" width="74" height="40" rx="2" fill="#fdf0f0" stroke="#d08080" stroke-width="1"/>
+  <text x="133" y="368" text-anchor="middle" font-size="5.5" letter-spacing="0.07em" fill="#c07070">204600</text>
+  <text x="133" y="380" text-anchor="middle" font-size="12" fill="#c07070" font-weight="700">50</text>
+  <text x="133" y="392" text-anchor="middle" font-size="6" letter-spacing="0.1em" fill="#c07070">HIGH</text>
 
-  <rect x="258" y="356" width="74" height="34" rx="2" fill="#f2f7f0" stroke="#8caa7c" stroke-width="0.9"/>
-  <text x="295" y="376" text-anchor="middle" font-size="7.5" letter-spacing="0.12em" fill="#7a9a6a">STABLE</text>
+  <!-- 204701 — 47 — HIGH -->
+  <rect x="177" y="356" width="74" height="40" rx="2" fill="#fdf0f0" stroke="#d08080" stroke-width="1"/>
+  <text x="214" y="368" text-anchor="middle" font-size="5.5" letter-spacing="0.07em" fill="#c07070">204701</text>
+  <text x="214" y="380" text-anchor="middle" font-size="12" fill="#c07070" font-weight="700">47</text>
+  <text x="214" y="392" text-anchor="middle" font-size="6" letter-spacing="0.1em" fill="#c07070">HIGH</text>
 
-  <rect x="339" y="356" width="74" height="34" rx="2" fill="#f2f7f0" stroke="#8caa7c" stroke-width="0.9"/>
-  <text x="376" y="376" text-anchor="middle" font-size="7.5" letter-spacing="0.12em" fill="#7a9a6a">STABLE</text>
+  <!-- 204702 — 43 — WATCH -->
+  <rect x="258" y="356" width="74" height="40" rx="2" fill="#fdf5e8" stroke="#c4a050" stroke-width="1"/>
+  <text x="295" y="368" text-anchor="middle" font-size="5.5" letter-spacing="0.07em" fill="#b09040">204702</text>
+  <text x="295" y="380" text-anchor="middle" font-size="12" fill="#b09040" font-weight="700">43</text>
+  <text x="295" y="392" text-anchor="middle" font-size="6" letter-spacing="0.1em" fill="#b09040">WATCH</text>
 
-  <rect x="420" y="356" width="74" height="34" rx="2" fill="#f2f7f0" stroke="#8caa7c" stroke-width="0.9"/>
-  <text x="457" y="376" text-anchor="middle" font-size="7.5" letter-spacing="0.12em" fill="#7a9a6a">STABLE</text>
+  <!-- 204400 — 42 — WATCH -->
+  <rect x="339" y="356" width="74" height="40" rx="2" fill="#fdf5e8" stroke="#c4a050" stroke-width="1"/>
+  <text x="376" y="368" text-anchor="middle" font-size="5.5" letter-spacing="0.07em" fill="#b09040">204400</text>
+  <text x="376" y="380" text-anchor="middle" font-size="12" fill="#b09040" font-weight="700">42</text>
+  <text x="376" y="392" text-anchor="middle" font-size="6" letter-spacing="0.1em" fill="#b09040">WATCH</text>
 
-  <rect x="501" y="356" width="74" height="34" rx="2" fill="#f2f7f0" stroke="#8caa7c" stroke-width="0.9"/>
-  <text x="538" y="376" text-anchor="middle" font-size="7.5" letter-spacing="0.12em" fill="#7a9a6a">STABLE</text>
+  <!-- 204200 — 46 — STABLE -->
+  <rect x="420" y="356" width="74" height="40" rx="2" fill="#f2f7f0" stroke="#8caa7c" stroke-width="0.9"/>
+  <text x="457" y="368" text-anchor="middle" font-size="5.5" letter-spacing="0.07em" fill="#7a9a6a">204200</text>
+  <text x="457" y="380" text-anchor="middle" font-size="12" fill="#7a9a6a" font-weight="700">46</text>
+  <text x="457" y="392" text-anchor="middle" font-size="6" letter-spacing="0.1em" fill="#7a9a6a">STABLE</text>
 
-  <rect x="582" y="356" width="74" height="34" rx="2" fill="#f2f7f0" stroke="#8caa7c" stroke-width="0.9"/>
-  <text x="619" y="376" text-anchor="middle" font-size="7.5" letter-spacing="0.12em" fill="#7a9a6a">STABLE</text>
+  <!-- 204101 — 32 — STABLE -->
+  <rect x="501" y="356" width="74" height="40" rx="2" fill="#f2f7f0" stroke="#8caa7c" stroke-width="0.9"/>
+  <text x="538" y="368" text-anchor="middle" font-size="5.5" letter-spacing="0.07em" fill="#7a9a6a">204101</text>
+  <text x="538" y="380" text-anchor="middle" font-size="12" fill="#7a9a6a" font-weight="700">32</text>
+  <text x="538" y="392" text-anchor="middle" font-size="6" letter-spacing="0.1em" fill="#7a9a6a">STABLE</text>
 
-  <rect x="663" y="356" width="82" height="34" rx="2" fill="#f2f7f0" stroke="#8caa7c" stroke-width="0.9"/>
-  <text x="704" y="376" text-anchor="middle" font-size="7.5" letter-spacing="0.12em" fill="#7a9a6a">STABLE</text>
+  <!-- 204102 — 31 — STABLE -->
+  <rect x="582" y="356" width="74" height="40" rx="2" fill="#f2f7f0" stroke="#8caa7c" stroke-width="0.9"/>
+  <text x="619" y="368" text-anchor="middle" font-size="5.5" letter-spacing="0.07em" fill="#7a9a6a">204102</text>
+  <text x="619" y="380" text-anchor="middle" font-size="12" fill="#7a9a6a" font-weight="700">31</text>
+  <text x="619" y="392" text-anchor="middle" font-size="6" letter-spacing="0.1em" fill="#7a9a6a">STABLE</text>
+
+  <!-- 204500 — 29 — STABLE -->
+  <rect x="663" y="356" width="82" height="40" rx="2" fill="#f2f7f0" stroke="#8caa7c" stroke-width="0.9"/>
+  <text x="704" y="368" text-anchor="middle" font-size="5.5" letter-spacing="0.07em" fill="#7a9a6a">204500</text>
+  <text x="704" y="380" text-anchor="middle" font-size="12" fill="#7a9a6a" font-weight="700">29</text>
+  <text x="704" y="392" text-anchor="middle" font-size="6" letter-spacing="0.1em" fill="#7a9a6a">STABLE</text>
 
   <!-- ── TOOLS STRIP ── -->
   <line x1="15" y1="403" x2="745" y2="403" stroke="#e0dedd" stroke-width="0.6"/>
@@ -897,6 +920,16 @@
   <text x="380" y="461" text-anchor="middle" font-size="7" fill="#cccccc" font-style="italic">Just City Mayoral Fellowship  ·  City of Salem  ·  Summer 2026</text>
 
 </svg>
+                  <!-- Validation callout -->
+                  <div style="margin-top:1.1rem;padding:0.9rem 1.1rem;background:#fafaf8;border:1px solid #e0dedd;border-left:3px solid #8caa7c;">
+                    <p style="font-size:11px;letter-spacing:0.08em;text-transform:uppercase;color:#7a9a6a;margin-bottom:0.45rem;font-weight:500;">Real-World Validation</p>
+                    <p style="font-size:12.5px;line-height:1.65;color:#444;">The Point (204300) scored 100 — Salem's densest renter neighborhood, with the city's highest cost burden and 86 affordable units nearing restriction expiry. It ranked 21 points above any other tract. Waterfront tracts with higher-income owner-occupancy scored 29–42. When the results were reviewed by City planning staff and the Mayor's policy team, the rankings aligned with what planners and residents already knew. The numbers matched the city.</p>
+                  </div>
+                  <!-- Choropleth map output -->
+                  <div style="margin-top:1rem;">
+                    <img src="about/salem-displacement-map.jpg" alt="Displacement Risk Score Choropleth — Salem Census Tracts, Summer 2026" style="width:100%;border:1px solid #e0dedd;display:block;height:auto;object-fit:contain;"/>
+                    <p style="font-size:11px;color:#aaa;margin-top:0.4rem;text-align:center;letter-spacing:0.06em;text-transform:uppercase;">Choropleth output — Summer 2026 scores by census tract</p>
+                  </div>
                 </div>
               </div>
             </div>
